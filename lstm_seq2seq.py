@@ -143,7 +143,8 @@ decoder_outputs = decoder_dense(decoder_outputs)
 
 # Define the model that will turn
 # `encoder_input_data` & `decoder_input_data` into `decoder_target_data`
-model = Model([encoder_inputs, decoder_inputs], decoder_outputs)
+temp = [encoder_inputs, decoder_inputs]
+model = Model(temp, decoder_outputs)
 
 # Run training
 model.compile(optimizer='rmsprop', loss='categorical_crossentropy')

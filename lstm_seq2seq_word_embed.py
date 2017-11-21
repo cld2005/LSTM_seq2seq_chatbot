@@ -52,6 +52,7 @@ from __future__ import print_function
 
 from keras.models import Model
 from keras.layers import Input, LSTM, Dense
+from keras.preprocessing.text import Tokenizer
 import numpy as np
 import os
 
@@ -61,38 +62,52 @@ latent_dim = 256  # Latent dimensionality of the encoding space.
 num_samples = 10000  # Number of samples to train on.
 # Path to the data txt file on disk.
 data_path = 'conv/south_park.txt'
-BASE_DIR = ''
+BASE_DIR = '../'
 GLOVE_DIR = os.path.join(BASE_DIR, 'glove.6B')
 MAX_SEQUENCE_LENGTH = 20
 MAX_NB_WORDS = 8000
 EMBEDDING_DIM = 100
 
 # Vectorize the data.
+
+print('loading Glove.6B 100 embedding.')
+
+embeddings_index = {}
+f = open(os.path.join(GLOVE_DIR, 'glove.6B.100d.txt'))
+for line in f:
+    values = line.split()
+    word = values[0]
+    coefs = np.asarray(values[1:], dtype='float32')
+    embeddings_index[word] = coefs
+f.close()
+
+print('Found %s word vectors.' % len(embeddings_index))
+
 input_texts = []
 target_texts = []
-input_characters = set()
-target_characters = set()
+input_words = set()
+target_words = set()
 lines = open(data_path).read().split('\n')
 for line in lines[: min(num_samples, len(lines) - 1)]:
     input_text, target_text = line.split('\t')
     # We use "tab" as the "start sequence" character
     # for the targets, and "\n" as "end sequence" character.
-    target_text = '\t' + target_text+'\n'
+    target_text = '\t' + target_text + '\n'
     input_texts.append(input_text)
     target_texts.append(target_text)
-    print (input_text,':', target_text)
 
-    for char in input_text:
-        if char not in input_characters:
-            input_characters.add(char)
-    for char in target_text:
-        if char not in target_characters:
-            target_characters.add(char)
+input_tokenizer = Tokenizer(num_words=MAX_NB_WORDS)
+input_tokenizer.fit_on_texts(input_texts)
+input_sequences = input_tokenizer.texts_to_sequences(input_texts)
+input_word_index = input_tokenizer.word_index
 
-input_characters = sorted(list(input_characters))
-target_characters = sorted(list(target_characters))
-num_encoder_tokens = len(input_characters)
-num_decoder_tokens = len(target_characters)
+target_tokenizer = Tokenizer(num_words=MAX_NB_WORDS)
+target_tokenizer.fit_on_texts(target_text)
+target_sequences = target_tokenizer.texts_to_sequences(target_text)
+target_word_index = target_tokenizer.word_index
+
+num_encoder_tokens = len(input_word_index)
+num_decoder_tokens = len(target_word_index)
 max_encoder_seq_length = max([len(txt) for txt in input_texts])
 max_decoder_seq_length = max([len(txt) for txt in target_texts])
 
@@ -102,10 +117,59 @@ print('Number of unique output tokens:', num_decoder_tokens)
 print('Max sequence length for inputs:', max_encoder_seq_length)
 print('Max sequence length for outputs:', max_decoder_seq_length)
 
+print('Preparing embedding matrix.')
+
+# prepare input embedding matrix
+input_num_words = len(input_word_index)
+input_embedding_matrix = np.zeros((input_num_words, EMBEDDING_DIM))
+for word, i in input_word_index.items():
+    if i >= MAX_NB_WORDS:
+        continue
+    embedding_vector = embeddings_index.get(word)
+    if embedding_vector is not None:
+        # words not found in embedding index will be all-zeros.
+        embedding_matrix[i] = embedding_vector
+
+
+# prepare decoder embedding matrix
+
+decoder_embedding_matrix = np.zeros((num_decoder_tokens,EMBEDDING_DIM))
+
+for word, i in target_word_index.items():
+    if i >= MAX_NB_WORDS:
+        continue
+    embedding_vector = embeddings_index.get(word)
+    if embedding_vector is not None:
+        # words not found in embedding index will be all-zeros.
+        decoder_embedding_matrix[i] = embedding_vector
+
+
+
+# Define an input sequence and process it.
+encoder_inputs = Input(shape=(None,))
+
+x = Embedding(input_num_words,
+              EMBEDDING_DIM,
+              weights=[input_embedding_matrix],
+              trainable=False)(encoder_inputs)
+
+encoder_outputs, state_h, state_c = LSTM(latent_dim, return_state=True)(x)
+
+# We discard `encoder_outputs` and only keep the states.
+encoder_states = [state_h, state_c]
+
+decoder_inputs = Input(shape=(None,))
+x = Embedding(num_decoder_tokens, latent_dim)(decoder_inputs)
+x = LSTM(latent_dim, return_sequences=True)(x, initial_state=encoder_states)
+decoder_outputs = Dense(num_decoder_tokens, activation='softmax')(x)
+
+
+"""
 input_token_index = dict(
-    [(char, i) for i, char in enumerate(input_characters)])
+    [(char, i) for i, char in enumerate(input_words)])
 target_token_index = dict(
-    [(char, i) for i, char in enumerate(target_characters)])
+    [(char, i) for i, char in enumerate(target_words)])
+"""
 
 encoder_input_data = np.zeros(
     (len(input_texts), max_encoder_seq_length, num_encoder_tokens),
@@ -127,13 +191,6 @@ for i, (input_text, target_text) in enumerate(zip(input_texts, target_texts)):
             # decoder_target_data will be ahead by one timestep
             # and will not include the start character.
             decoder_target_data[i, t - 1, target_token_index[char]] = 1.
-
-# Define an input sequence and process it.
-encoder_inputs = Input(shape=(None, num_encoder_tokens))
-encoder = LSTM(latent_dim, return_state=True)
-encoder_outputs, state_h, state_c = encoder(encoder_inputs)
-# We discard `encoder_outputs` and only keep the states.
-encoder_states = [state_h, state_c]
 
 # Set up the decoder, using `encoder_states` as initial state.
 decoder_inputs = Input(shape=(None, num_decoder_tokens))
@@ -211,11 +268,11 @@ def decode_sequence(input_seq):
         # Sample a token
         # Sample a token
         if first_draw:
-         sampled_token_index = np.random.choice(np.size(output_tokens[0, -1, :]),1,p=output_tokens[0, -1, :])
-         sampled_token_index=sampled_token_index[0];
-         first_draw=False
+            sampled_token_index = np.random.choice(np.size(output_tokens[0, -1, :]), 1, p=output_tokens[0, -1, :])
+            sampled_token_index = sampled_token_index[0];
+            first_draw = False
         else:
-         sampled_token_index = np.argmax(output_tokens[0, -1, :])
+            sampled_token_index = np.argmax(output_tokens[0, -1, :])
 
         sampled_char = reverse_target_char_index[sampled_token_index]
         decoded_sentence += sampled_char
@@ -223,7 +280,7 @@ def decode_sequence(input_seq):
         # Exit condition: either hit max length
         # or find stop character.
         if (sampled_char == '\n' or
-           len(decoded_sentence) > max_decoder_seq_length):
+                    len(decoded_sentence) > max_decoder_seq_length):
             stop_condition = True
 
         # Update the target sequence (of length 1).
