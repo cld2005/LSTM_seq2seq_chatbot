@@ -101,13 +101,13 @@ input_tokenizer = Tokenizer(num_words=MAX_NB_WORDS, filters=FILTER_STRING)
 input_tokenizer.fit_on_texts(input_texts)
 input_sequences = input_tokenizer.texts_to_sequences(input_texts)
 input_word_index = input_tokenizer.word_index
-print('input_word_index: ', input_word_index)
+print('input_word_index: ', input_word_index.values().sort())
 
 target_tokenizer = Tokenizer(num_words=MAX_NB_WORDS, filters=FILTER_STRING)
 target_tokenizer.fit_on_texts(target_texts)
 target_sequences = target_tokenizer.texts_to_sequences(target_texts)
 target_word_index = target_tokenizer.word_index
-print('target_word_index: ', target_word_index)
+print('target_word_index: ', target_word_index.values().sort())
 
 num_encoder_tokens = len(input_word_index)
 num_decoder_tokens = len(target_word_index)
