@@ -26,8 +26,8 @@
       <file leaf-file-name="lstm_seq2seq_word_embed.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lstm_seq2seq_word_embed.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="503">
-              <caret line="125" column="43" lean-forward="false" selection-start-line="125" selection-start-column="43" selection-end-line="125" selection-end-column="43" />
+            <state relative-caret-position="-3249">
+              <caret line="70" column="19" lean-forward="false" selection-start-line="70" selection-start-column="16" selection-end-line="70" selection-end-column="19" />
               <folding>
                 <element signature="e#2087#2124#0" expanded="true" />
               </folding>
@@ -841,8 +841,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lstm_seq2seq_word_embed.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="503">
-          <caret line="125" column="43" lean-forward="false" selection-start-line="125" selection-start-column="43" selection-end-line="125" selection-end-column="43" />
+        <state relative-caret-position="-3249">
+          <caret line="70" column="19" lean-forward="false" selection-start-line="70" selection-start-column="16" selection-end-line="70" selection-end-column="19" />
           <folding>
             <element signature="e#2087#2124#0" expanded="true" />
           </folding>
