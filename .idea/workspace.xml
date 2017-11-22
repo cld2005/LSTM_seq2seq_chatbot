@@ -26,8 +26,8 @@
       <file leaf-file-name="lstm_seq2seq_word_embed.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lstm_seq2seq_word_embed.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="111">
-              <caret line="175" column="28" lean-forward="false" selection-start-line="175" selection-start-column="28" selection-end-line="175" selection-end-column="28" />
+            <state relative-caret-position="201">
+              <caret line="69" column="19" lean-forward="false" selection-start-line="69" selection-start-column="19" selection-end-line="69" selection-end-column="19" />
               <folding>
                 <element signature="e#2087#2124#0" expanded="true" />
               </folding>
@@ -88,7 +88,6 @@
       <find>reverse_target_char_index</find>
       <find>padding</find>
       <find>pad</find>
-      <find>MAX_NB_WORDS</find>
       <find>MAX_SEQUENCE_LENGTH</find>
       <find>but</find>
       <find>sampled_token_index</find>
@@ -96,6 +95,7 @@
       <find>encoder_input_data</find>
       <find>sentence_padding</find>
       <find>embedding</find>
+      <find>MAX_NB_WORDS</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -840,8 +840,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lstm_seq2seq_word_embed.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="175" column="28" lean-forward="false" selection-start-line="175" selection-start-column="28" selection-end-line="175" selection-end-column="28" />
+        <state relative-caret-position="201">
+          <caret line="69" column="19" lean-forward="false" selection-start-line="69" selection-start-column="19" selection-end-line="69" selection-end-column="19" />
           <folding>
             <element signature="e#2087#2124#0" expanded="true" />
           </folding>
