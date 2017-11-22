@@ -69,6 +69,7 @@ GLOVE_DIR = os.path.join(BASE_DIR, 'glove.6B')
 MAX_SEQUENCE_LENGTH = 20
 MAX_NB_WORDS = 500
 EMBEDDING_DIM = 100
+NUM_PREDICTION =100
 START_SIGN = '*'
 STOP_SIGN = '$'
 FILTER_STRING = '!"#%&()+,-./:;<=>?@[\\]^_`{|}~'
@@ -311,7 +312,7 @@ def decode_sequence(input_seq):
     return decoded_sentence
 
 
-for seq_index in range(10):
+for seq_index in range(NUM_PREDICTION):
     # Take one sequence (part of the training test)
     # for trying out decoding.
     print('---------------------------------------')
