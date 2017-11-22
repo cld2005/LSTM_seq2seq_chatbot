@@ -101,13 +101,15 @@ input_tokenizer = Tokenizer(num_words=MAX_NB_WORDS, filters=FILTER_STRING)
 input_tokenizer.fit_on_texts(input_texts)
 input_sequences = input_tokenizer.texts_to_sequences(input_texts)
 input_word_index = input_tokenizer.word_index
-print('input_word_index: ', input_word_index.values().sort())
+print('input_word_index: ', sorted(input_word_index.values()))
 
+print ('input_sequences: ',input_sequences)
 target_tokenizer = Tokenizer(num_words=MAX_NB_WORDS, filters=FILTER_STRING)
 target_tokenizer.fit_on_texts(target_texts)
 target_sequences = target_tokenizer.texts_to_sequences(target_texts)
 target_word_index = target_tokenizer.word_index
-print('target_word_index: ', target_word_index.values().sort())
+print('target_word_index: ', sorted(target_word_index.values()))
+print ('target_sequences: ',target_sequences)
 
 num_encoder_tokens = len(input_word_index)
 num_decoder_tokens = len(target_word_index)
@@ -208,7 +210,7 @@ decoder_target_data = np.zeros(
 for i, target_sequence in enumerate(target_sequences):
 
     for t, num in enumerate(target_sequence):
-        if t > 0:
+        if t > 0 and num!=0:
             # decoder_target_data will be ahead by one timestep
             # and will not include the start character.
             decoder_target_data[i, t - 1, num] = 1.
