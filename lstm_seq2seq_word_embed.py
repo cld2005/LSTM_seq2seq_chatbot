@@ -63,11 +63,11 @@ epochs = 30  # Number of epochs to train for.
 latent_dim = 256  # Latent dimensionality of the encoding space.
 num_samples = 10000  # Number of samples to train on.
 # Path to the data txt file on disk.
-data_path = 'conv/south_park.txt'
+data_path = 'conv/codedak_conv.txt'
 BASE_DIR = '../'
 GLOVE_DIR = os.path.join(BASE_DIR, 'glove.6B')
-MAX_SEQUENCE_LENGTH = 20
-MAX_NB_WORDS = 5000
+MAX_SEQUENCE_LENGTH = 5
+MAX_NB_WORDS = 8000
 EMBEDDING_DIM = 100
 NUM_PREDICTION =50
 TRIANABLE = False
@@ -101,14 +101,14 @@ input_tokenizer = Tokenizer(num_words=MAX_NB_WORDS, filters=FILTER_STRING)
 input_tokenizer.fit_on_texts(input_texts)
 input_sequences = input_tokenizer.texts_to_sequences(input_texts)
 input_word_index = input_tokenizer.word_index
-print('input_word_index: ', sorted(input_word_index.values()))
-
+print('input_word_index: ', input_word_index)
 print ('input_sequences: ',input_sequences)
-target_tokenizer = Tokenizer(num_words=MAX_NB_WORDS, filters=FILTER_STRING)
+
+target_tokenizer = Tokenizer(num_words=MAX_NB_WORDS+2, filters=FILTER_STRING)
 target_tokenizer.fit_on_texts(target_texts)
 target_sequences = target_tokenizer.texts_to_sequences(target_texts)
 target_word_index = target_tokenizer.word_index
-print('target_word_index: ', sorted(target_word_index.values()))
+print('target_word_index: ', target_word_index)
 print ('target_sequences: ',target_sequences)
 
 num_encoder_tokens = len(input_word_index)
@@ -125,9 +125,9 @@ print('Max sequence length for inputs:', max_encoder_seq_length)
 print('Max sequence length for outputs:', max_decoder_seq_length)
 
 input_sequences = pad_sequences(input_sequences,padding='post',maxlen = min(max_encoder_seq_length,MAX_SEQUENCE_LENGTH),truncating='post');
-print('input_sequences: ', input_sequences)
+print('input_sequences with padding: ', input_sequences.__getitem__(1))
 target_sequences = pad_sequences(target_sequences,padding='post',maxlen = min(max_decoder_seq_length,MAX_SEQUENCE_LENGTH+2),truncating='post');
-print('target_sequences: ', target_sequences)
+print('target_sequences: ', target_sequences.__getitem__(28))
 
 print('Preparing embedding matrix.')
 
@@ -194,12 +194,6 @@ decoder_dense = Dense(decoder_num_words + 1, activation='softmax')
 decoder_outputs = decoder_dense(decoder_outputs)
 print('decoder_outputs: ', decoder_outputs)
 
-"""
-input_token_index = dict(
-    [(char, i) for i, char in enumerate(input_words)])
-target_token_index = dict(
-    [(char, i) for i, char in enumerate(target_words)])
-"""
 
 encoder_input_data = np.asarray(input_sequences)
 decoder_input_data = np.asarray(target_sequences)
