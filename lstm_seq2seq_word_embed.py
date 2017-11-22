@@ -69,7 +69,8 @@ GLOVE_DIR = os.path.join(BASE_DIR, 'glove.6B')
 MAX_SEQUENCE_LENGTH = 20
 MAX_NB_WORDS = 8000
 EMBEDDING_DIM = 100
-NUM_PREDICTION =100
+NUM_PREDICTION =50
+TRIANABLE = False
 START_SIGN = '*'
 STOP_SIGN = '$'
 FILTER_STRING = '!"#%&()+,-./:;<=>?@[\\]^_`{|}~'
@@ -173,7 +174,7 @@ encoder_inputs = Input(shape=(None,))
 x = Embedding(input_num_words + 1,
               EMBEDDING_DIM,
               weights=[input_embedding_matrix],
-              trainable=True)(encoder_inputs)
+              trainable=TRIANABLE)(encoder_inputs)
 
 encoder_outputs, state_h, state_c = LSTM(latent_dim, return_state=True)(x)
 
@@ -184,7 +185,7 @@ decoder_inputs = Input(shape=(None,))
 decoder_embedding = Embedding(decoder_num_words + 1,
                               EMBEDDING_DIM,
                               weights=[decoder_embedding_matrix],
-                              trainable=True)(decoder_inputs)
+                              trainable=TRIANABLE)(decoder_inputs)
 decoder_lstm = LSTM(latent_dim, return_sequences=True, return_state=True)
 decoder_outputs, _, _ = decoder_lstm(decoder_embedding, initial_state=encoder_states)
 decoder_dense = Dense(decoder_num_words + 1, activation='softmax')
