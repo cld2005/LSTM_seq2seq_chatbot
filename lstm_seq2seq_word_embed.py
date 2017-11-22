@@ -59,9 +59,9 @@ import numpy as np
 import os
 
 batch_size = 64  # Batch size for training.
-epochs = 1  # Number of epochs to train for.
+epochs = 30  # Number of epochs to train for.
 latent_dim = 256  # Latent dimensionality of the encoding space.
-num_samples = 500  # Number of samples to train on.
+num_samples = 5000  # Number of samples to train on.
 # Path to the data txt file on disk.
 data_path = 'conv/south_park.txt'
 BASE_DIR = '../'
@@ -84,8 +84,13 @@ target_words = set()
 lines = open(data_path).read().split('\n')
 for line in lines[: min(num_samples, len(lines) - 1)]:
     input_text, target_text = line.split('\t')
-    # We use "tab" as the "start sequence" character
-    # for the targets, and "\n" as "end sequence" character.
+    # We use "*" as the "start sequence" character
+    # for the targets, and "$" as "end sequence" character.
+    target_text_words=target_text.split(' ')
+    target_len = len(target_text_words)
+    if target_len> MAX_SEQUENCE_LENGTH:
+        target_text = ' '.join(target_text_words[0:MAX_SEQUENCE_LENGTH])
+
     target_text = START_SIGN + ' ' + target_text + ' ' + STOP_SIGN
     input_texts.append(input_text)
     target_texts.append(target_text)
@@ -117,8 +122,8 @@ print('Number of unique output tokens:', num_decoder_tokens)
 print('Max sequence length for inputs:', max_encoder_seq_length)
 print('Max sequence length for outputs:', max_decoder_seq_length)
 
-input_sequences = pad_sequences(input_sequences, max_encoder_seq_length);
-target_sequences = pad_sequences(target_sequences, max_decoder_seq_length);
+input_sequences = pad_sequences(input_sequences,padding='post',maxlen = min(max_encoder_seq_length,MAX_SEQUENCE_LENGTH),truncating='post');
+target_sequences = pad_sequences(target_sequences,padding='post',maxlen = min(max_decoder_seq_length,MAX_SEQUENCE_LENGTH+2),truncating='post');
 
 print('Preparing embedding matrix.')
 
@@ -195,7 +200,7 @@ target_token_index = dict(
 encoder_input_data = np.asarray(input_sequences)
 decoder_input_data = np.asarray(target_sequences)
 decoder_target_data = np.zeros(
-    (len(input_texts), max_decoder_seq_length, num_decoder_tokens + 1),
+    (len(input_texts), min(max_decoder_seq_length,MAX_SEQUENCE_LENGTH+2), num_decoder_tokens + 1),
     dtype='float32')
 
 for i, target_sequence in enumerate(target_sequences):
@@ -253,10 +258,10 @@ decoder_model = Model(
 # something readable.
 reverse_input_char_index = dict(
     (i, word) for word, i in input_word_index.items())
-reverse_input_char_index[0]='sentence_padding'
+reverse_input_char_index[0]=''
 reverse_target_char_index = dict(
     (i, word) for word, i in target_word_index.items())
-reverse_target_char_index[0]='sentence_padding'
+reverse_target_char_index[0]=''
 
 
 def decode_sequence(input_seq):
@@ -293,7 +298,7 @@ def decode_sequence(input_seq):
         # Exit condition: either hit max length
         # or find stop character.
         if (sampled_word == STOP_SIGN or
-                    len(decoded_sentence) > max_decoder_seq_length):
+                    len(decoded_sentence) > min (max_decoder_seq_length,MAX_SEQUENCE_LENGTH+2)):
             stop_condition = True
 
         # Update the target sequence (of length 1).
@@ -309,8 +314,8 @@ def decode_sequence(input_seq):
 for seq_index in range(10):
     # Take one sequence (part of the training test)
     # for trying out decoding.
+    print('---------------------------------------')
     input_seq = encoder_input_data[seq_index: seq_index + 1]
     decoded_sentence = decode_sequence(input_seq)
-    print('-')
     print('Input sentence:', input_texts[seq_index])
     print('Decoded sentence:', decoded_sentence)
