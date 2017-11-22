@@ -204,7 +204,7 @@ decoder_target_data = np.zeros(
 for i, target_sequence in enumerate(target_sequences):
 
     for t, num in enumerate(target_sequence):
-        if t > 0 and num!=0:
+        if t > 0:
             # decoder_target_data will be ahead by one timestep
             # and will not include the start character.
             decoder_target_data[i, t - 1, num] = 1.
