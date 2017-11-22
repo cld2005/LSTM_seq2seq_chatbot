@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="974ab8e8-3f68-40db-965d-c232c9267975" name="Default" comment="" />
+    <list default="true" id="974ab8e8-3f68-40db-965d-c232c9267975" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/upload.sh" afterPath="$PROJECT_DIR$/upload.sh" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,7 +34,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="lstm_seq2seq_word_embed.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="lstm_seq2seq_word_embed.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lstm_seq2seq_word_embed.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="770">
@@ -40,6 +42,16 @@
               <folding>
                 <element signature="e#2087#2124#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="upload.sh" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/upload.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -111,11 +123,11 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/parse_pair.py" />
-        <option value="$PROJECT_DIR$/upload.sh" />
         <option value="$PROJECT_DIR$/lstm_seq2seq_conv.py" />
         <option value="$PROJECT_DIR$/parse_south_park.py" />
         <option value="$PROJECT_DIR$/lstm_seq2seq.py" />
         <option value="$PROJECT_DIR$/lstm_seq2seq_word_embed.py" />
+        <option value="$PROJECT_DIR$/upload.sh" />
       </list>
     </option>
   </component>
@@ -743,13 +755,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/upload.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/conv/parsed.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="125100">
@@ -834,6 +839,14 @@
           <folding>
             <element signature="e#2087#2124#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/upload.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
