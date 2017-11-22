@@ -100,14 +100,12 @@ for line in lines[: min(num_samples, len(lines) - 1)]:
 input_tokenizer = Tokenizer(num_words=MAX_NB_WORDS, filters=FILTER_STRING)
 input_tokenizer.fit_on_texts(input_texts)
 input_sequences = input_tokenizer.texts_to_sequences(input_texts)
-print('input_sequences: ', input_sequences)
 input_word_index = input_tokenizer.word_index
 print('input_word_index: ', input_word_index)
 
 target_tokenizer = Tokenizer(num_words=MAX_NB_WORDS, filters=FILTER_STRING)
 target_tokenizer.fit_on_texts(target_texts)
 target_sequences = target_tokenizer.texts_to_sequences(target_texts)
-print('target_sequences: ', target_sequences)
 target_word_index = target_tokenizer.word_index
 print('target_word_index: ', target_word_index)
 
@@ -125,7 +123,9 @@ print('Max sequence length for inputs:', max_encoder_seq_length)
 print('Max sequence length for outputs:', max_decoder_seq_length)
 
 input_sequences = pad_sequences(input_sequences,padding='post',maxlen = min(max_encoder_seq_length,MAX_SEQUENCE_LENGTH),truncating='post');
+print('input_sequences: ', input_sequences)
 target_sequences = pad_sequences(target_sequences,padding='post',maxlen = min(max_decoder_seq_length,MAX_SEQUENCE_LENGTH+2),truncating='post');
+print('target_sequences: ', target_sequences)
 
 print('Preparing embedding matrix.')
 
