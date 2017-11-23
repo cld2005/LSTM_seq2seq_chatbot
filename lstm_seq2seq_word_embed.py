@@ -249,7 +249,7 @@ def decode_sequence(input_seq):
             first_draw = False
         else:
             sampled_token_index = np.argmax(output_tokens[0, -1, 1:-1])
-        print ("sampled_token_index",sampled_token_index)
+        print ("sampled_token_index",sampled_token_index, "p= ",output_tokens[0, -1, sampled_token_index])
         sampled_word = reverse_target_char_index[sampled_token_index]
         decoded_sentence += (sampled_word + ' ')
 
