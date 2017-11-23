@@ -27,8 +27,8 @@
       <file leaf-file-name="lstm_seq2seq_word_embed.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lstm_seq2seq_word_embed.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="77" column="62" lean-forward="false" selection-start-line="77" selection-start-column="62" selection-end-line="77" selection-end-column="62" />
+            <state relative-caret-position="261">
+              <caret line="76" column="61" lean-forward="false" selection-start-line="76" selection-start-column="57" selection-end-line="76" selection-end-column="61" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
@@ -549,7 +549,7 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33780387" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.050847456" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.41016948" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3176865" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -864,7 +864,7 @@
         <state relative-caret-position="208">
           <caret line="21" column="18" lean-forward="false" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="18" />
           <folding>
-            <element signature="e#108#118#0" expanded="true" />
+            <element signature="e#108#118#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -927,8 +927,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lstm_seq2seq_word_embed.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="77" column="62" lean-forward="false" selection-start-line="77" selection-start-column="62" selection-end-line="77" selection-end-column="62" />
+        <state relative-caret-position="261">
+          <caret line="76" column="61" lean-forward="false" selection-start-line="76" selection-start-column="57" selection-end-line="76" selection-end-column="61" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
           </folding>

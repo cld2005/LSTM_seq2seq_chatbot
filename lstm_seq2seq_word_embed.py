@@ -74,8 +74,8 @@ print('Number of unique output tokens:', num_decoder_tokens)
 print('Max sequence length for inputs:', max_encoder_seq_length)
 print('Max sequence length for outputs:', max_decoder_seq_length)
 
-input_sequences = pad_sequences(input_sequences,padding='pre',maxlen = min(max_encoder_seq_length,MAX_SEQUENCE_LENGTH),truncating='post');
-target_sequences = pad_sequences(target_sequences,padding='pre',maxlen = min(max_decoder_seq_length,MAX_SEQUENCE_LENGTH+2),truncating='post');
+input_sequences = pad_sequences(input_sequences,padding='post',maxlen = min(max_encoder_seq_length,MAX_SEQUENCE_LENGTH),truncating='post');
+target_sequences = pad_sequences(target_sequences,padding='post',maxlen = min(max_decoder_seq_length,MAX_SEQUENCE_LENGTH+2),truncating='post');
 
 print('Preparing embedding matrix.')
 
