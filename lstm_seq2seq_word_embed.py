@@ -17,16 +17,24 @@ data_path = 'conv/codedak_conv.txt'
 BASE_DIR = '../'
 GLOVE_DIR = os.path.join(BASE_DIR, 'glove.6B')
 MAX_SEQUENCE_LENGTH = 20
-MAX_NB_WORDS = 9000
+MAX_NB_WORDS = 10000
 EMBEDDING_DIM = 100
 NUM_PREDICTION =50
 TRIANABLE = False
 START_SIGN = '*'
-STOP_SIGN = '$'
-FILTER_STRING = '!"#%&()+,-./:;<=>?@[\\]^_`{|}~'
+STOP_SIGN = '.'
+FILTER_STRING = '$!"#%&()+,-/:;<=>?@[\\]^_`{|}~'
 # Vectorize the data.
-
-
+print('loading Glove.6B 100 embedding.')
+embeddings_index = {}
+f = open(os.path.join(GLOVE_DIR, 'glove.6B.100d.txt'))
+for line in f:
+    values = line.split()
+    word = values[0]
+    coefs = np.asarray(values[1:], dtype='float32')
+    embeddings_index[word] = coefs
+f.close()
+print('Found %s word vectors.' % len(embeddings_index))
 
 
 input_texts = []
@@ -37,11 +45,21 @@ lines = open(data_path).read().split('\n')
 for line in lines[: min(num_samples, len(lines) - 1)]:
     input_text, target_text = line.split('\t')
     # We use "*" as the "start sequence" character
-    # for the targets, and "$" as "end sequence" character.
+    # for the targets, and "." as "end sequence" character.
+
+    input_text_words = input_text.split (' ')
+
+    input_text_words = [word for word in input_text_words if embeddings_index.has_key(word)]
+
+    input_text = ' '.join(input_text_words[0:-1])
+
     target_text_words=target_text.split(' ')
+    target_text_words = [word for word in target_text_words if embeddings_index.has_key(word)]
     target_len = len(target_text_words)
     if target_len> MAX_SEQUENCE_LENGTH:
         target_text = ' '.join(target_text_words[0:MAX_SEQUENCE_LENGTH])
+    else:
+        target_text = ' '.join(target_text_words[0:-1])
 
     target_text = START_SIGN + ' ' + target_text + ' ' + STOP_SIGN
     input_texts.append(input_text)
@@ -49,7 +67,7 @@ for line in lines[: min(num_samples, len(lines) - 1)]:
 
 input_tokenizer = Tokenizer(num_words=MAX_NB_WORDS, filters=FILTER_STRING)
 input_tokenizer.fit_on_texts(input_texts)
-input_sequences = input_tokenizer.texts_to_sequences(input_texts)
+input_sequences = input_tokenizer.texts_to_sequences(input_texts) #nothing in the sequence ls larger than MAX_NB_WORDS-1
 input_word_index = input_tokenizer.word_index
 print('input_word_index: ', input_word_index)
 print ('input_sequences: ',input_sequences)
@@ -79,22 +97,14 @@ target_sequences = pad_sequences(target_sequences,padding='post',maxlen = min(ma
 
 print('Preparing embedding matrix.')
 
-print('loading Glove.6B 100 embedding.')
 
-embeddings_index = {}
-f = open(os.path.join(GLOVE_DIR, 'glove.6B.100d.txt'))
-for line in f:
-    values = line.split()
-    word = values[0]
-    coefs = np.asarray(values[1:], dtype='float32')
-    embeddings_index[word] = coefs
-f.close()
-print('Found %s word vectors.' % len(embeddings_index))
+
 
 # prepare input embedding matrix
 print('prepare input embedding matrix')
 input_num_words = num_encoder_tokens
-input_embedding_matrix = np.zeros((input_num_words + 1, EMBEDDING_DIM))
+input_embedding_matrix = np.zeros((min(MAX_NB_WORDS,input_num_words) + 1, EMBEDDING_DIM))
+hit_count=0
 for word, i in input_word_index.items():
     # print(word, i)
     if i >= MAX_NB_WORDS:
@@ -103,11 +113,13 @@ for word, i in input_word_index.items():
     if embedding_vector is not None:
         # words not found in embedding index will be all-zeros.
         input_embedding_matrix[i] = embedding_vector
+        hit_count=hit_count+1
 
+print ("hit_count :" , hit_count , "percentage: ", hit_count*1.0/(min(MAX_NB_WORDS,input_num_words) + 1))
 # prepare decoder embedding matrix
 print('prepare decoder embedding matrix')
 decoder_num_words = num_decoder_tokens
-decoder_embedding_matrix = np.zeros((decoder_num_words + 1, EMBEDDING_DIM))
+decoder_embedding_matrix = np.zeros((min(MAX_NB_WORDS+2,decoder_num_words) + 1, EMBEDDING_DIM))
 
 for word, i in target_word_index.items():
     if i >= MAX_NB_WORDS:
