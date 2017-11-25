@@ -8,9 +8,9 @@ from keras.preprocessing.sequence import pad_sequences
 import numpy as np
 import os
 
-batch_size = 32  # Batch size for training.
+batch_size = 64  # Batch size for training.
 epochs = 30  # Number of epochs to train for.
-latent_dim = 512  # Latent dimensionality of the encoding space.
+latent_dim = 256  # Latent dimensionality of the encoding space.
 num_samples = 10000  # Number of samples to train on.
 # Path to the data txt file on disk.
 data_path = 'conv/codedak_conv.txt'
