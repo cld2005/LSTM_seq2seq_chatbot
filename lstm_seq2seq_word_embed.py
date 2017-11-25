@@ -16,12 +16,13 @@ num_samples = 10000  # Number of samples to train on.
 data_path = 'conv/codedak_conv.txt'
 BASE_DIR = '../'
 GLOVE_DIR = os.path.join(BASE_DIR, 'glove.6B')
-MAX_SEQUENCE_LENGTH = 20
+MAX_SEQUENCE_LENGTH = 5
 MAX_NB_WORDS = 5000
 EMBEDDING_DIM = 100
-NUM_PREDICTION =50
+NUM_PREDICTION = 50
 TRIANABLE = False
 START_SIGN = '*'
+SPACE = ' '
 STOP_SIGN = '.'
 FILTER_STRING = '$!"#%&()+,-/:;<=>?@[\\]^_`{|}~'
 
@@ -36,7 +37,6 @@ for line in f:
 f.close()
 print('Found %s word vectors.' % len(embeddings_index))
 
-
 input_texts = []
 target_texts = []
 
@@ -46,43 +46,48 @@ for line in lines[: min(num_samples, len(lines) - 1)]:
     # We use "*" as the "start sequence" character
     # for the targets, and "." as "end sequence" character.
 
-    input_text_words = input_text.split (' ')
-    input_text_words = [word for word in input_text_words if embeddings_index.has_key(word)]# take only words in the word embedding
-    input_text = ' '.join(input_text_words[0:-1])
+    input_text_words = input_text.split(SPACE)
+    input_text_words = [word for word in input_text_words if
+                        embeddings_index.has_key(word)]  # take only words in the word embedding
+    input_text = SPACE.join(input_text_words[0:-1])
 
-    target_text_words=target_text.split(' ')
-    target_text_words = [word for word in target_text_words if embeddings_index.has_key(word)]# take only words in the word embedding
+    target_text_words = target_text.split(SPACE)
+    target_text_words = [word for word in target_text_words if
+                         embeddings_index.has_key(word)]  # take only words in the word embedding
     target_len = len(target_text_words)
-    if target_len> MAX_SEQUENCE_LENGTH:
-        target_text = ' '.join(target_text_words[0:MAX_SEQUENCE_LENGTH])
+    if target_len > MAX_SEQUENCE_LENGTH:
+        target_text = SPACE.join(target_text_words[0:MAX_SEQUENCE_LENGTH])
     else:
-        target_text = ' '.join(target_text_words[0:-1])
+        target_text = SPACE.join(target_text_words[0:-1])
 
-    target_text = START_SIGN + ' ' + target_text + ' ' + STOP_SIGN
+    target_text = START_SIGN + SPACE + target_text + SPACE + STOP_SIGN
     input_texts.append(input_text)
     target_texts.append(target_text)
 
 input_tokenizer = Tokenizer(num_words=MAX_NB_WORDS, filters=FILTER_STRING)
 input_tokenizer.fit_on_texts(input_texts)
-input_sequences = input_tokenizer.texts_to_sequences(input_texts) #nothing in the sequence ls larger than MAX_NB_WORDS-1
+input_sequences = input_tokenizer.texts_to_sequences(
+    input_texts)  # nothing in the sequence ls larger than MAX_NB_WORDS-1
 input_word_index = input_tokenizer.word_index
 print('input_word_index: ', input_word_index)
-print ('input_sequences: ',input_sequences)
+print('input_sequences: ', input_sequences)
 
-target_tokenizer = Tokenizer(num_words=MAX_NB_WORDS+2, filters=FILTER_STRING)
+target_tokenizer = Tokenizer(num_words=MAX_NB_WORDS + 2, filters=FILTER_STRING)
 target_tokenizer.fit_on_texts(target_texts)
 target_sequences = target_tokenizer.texts_to_sequences(target_texts)
 target_word_index = target_tokenizer.word_index
 print('target_word_index: ', target_word_index)
-print ('target_sequences: ',target_sequences)
+print('target_sequences: ', target_sequences)
 
-num_encoder_tokens = min (len(input_word_index),MAX_NB_WORDS)+1
-num_decoder_tokens = min (len(target_word_index),MAX_NB_WORDS+2)+1
+num_encoder_tokens = min(len(input_word_index), MAX_NB_WORDS) + 1
+num_decoder_tokens = min(len(target_word_index), MAX_NB_WORDS + 2) + 1
 max_encoder_seq_length = max([len(txt) for txt in input_sequences])
 max_decoder_seq_length = max([len(txt) for txt in target_sequences])
 
-input_sequences = pad_sequences(input_sequences,padding='post',maxlen = min(max_encoder_seq_length,MAX_SEQUENCE_LENGTH),truncating='post');
-target_sequences = pad_sequences(target_sequences,padding='post',maxlen = min(max_decoder_seq_length,MAX_SEQUENCE_LENGTH+2),truncating='post');
+input_sequences = pad_sequences(input_sequences, padding='post',
+                                maxlen=min(max_encoder_seq_length, MAX_SEQUENCE_LENGTH), truncating='post');
+target_sequences = pad_sequences(target_sequences, padding='post',
+                                 maxlen=min(max_decoder_seq_length, MAX_SEQUENCE_LENGTH + 2), truncating='post');
 
 print('Number of samples:', len(input_texts))
 print('Number of encoder input:', len(input_sequences))
@@ -92,18 +97,13 @@ print('Number of unique output tokens:', num_decoder_tokens)
 print('Max sequence length for inputs:', max_encoder_seq_length)
 print('Max sequence length for outputs:', max_decoder_seq_length)
 
-
-
 print('Preparing embedding matrix.')
-
-
-
 
 # prepare input embedding matrix
 print('prepare input embedding matrix')
-#input_num_words = num_encoder_tokens
+# input_num_words = num_encoder_tokens
 input_embedding_matrix = np.zeros((num_encoder_tokens, EMBEDDING_DIM))
-hit_count=0
+hit_count = 0
 for word, i in input_word_index.items():
     # print(word, i)
     if i >= MAX_NB_WORDS:
@@ -112,12 +112,12 @@ for word, i in input_word_index.items():
     if embedding_vector is not None:
         # words not found in embedding index will be all-zeros.
         input_embedding_matrix[i] = embedding_vector
-        hit_count=hit_count+1
+        hit_count = hit_count + 1
 
-print ("hit_count :" , hit_count , "percentage: ", hit_count*1.0/(num_encoder_tokens))
+print("hit_count :", hit_count, "percentage: ", hit_count * 1.0 / (num_encoder_tokens))
 # prepare decoder embedding matrix
 print('prepare decoder embedding matrix')
-#decoder_num_words = num_decoder_tokens
+# decoder_num_words = num_decoder_tokens
 decoder_embedding_matrix = np.zeros((num_decoder_tokens, EMBEDDING_DIM))
 
 for word, i in target_word_index.items():
@@ -148,24 +148,24 @@ decoder_embedding = Embedding(num_decoder_tokens,
                               weights=[decoder_embedding_matrix],
                               trainable=TRIANABLE)(decoder_inputs)
 decoder_lstm = LSTM(latent_dim, return_sequences=True, return_state=True)
-decoder_outputs, _, _ = decoder_lstm(decoder_embedding, initial_state=encoder_states)
+decoder_lstm_output, _, _ = decoder_lstm(decoder_embedding, initial_state=encoder_states)
 decoder_dense = Dense(num_decoder_tokens, activation='softmax')
-decoder_outputs = decoder_dense(decoder_outputs)
+decoder_outputs = decoder_dense(decoder_lstm_output)
 print('decoder_outputs: ', decoder_outputs)
-
 
 encoder_input_data = np.asarray(input_sequences)
 decoder_input_data = np.asarray(target_sequences)
+
 decoder_target_data = np.zeros(
-    (len(input_texts), min(max_decoder_seq_length,MAX_SEQUENCE_LENGTH+2), num_decoder_tokens),
+    (len(input_texts), min(max_decoder_seq_length, MAX_SEQUENCE_LENGTH + 2), num_decoder_tokens),
     dtype='float32')
 
 for i, target_sequence in enumerate(target_sequences):
-
     for t, num in enumerate(target_sequence):
-        if t > 0:
+        if t > 0 and num!=0:
             # decoder_target_data will be ahead by one timestep
             # and will not include the start character.
+            print ('num',num)
             decoder_target_data[i, t - 1, num] = 1.
 
 # Define the model that will turn
@@ -215,10 +215,10 @@ decoder_model = Model(
 # something readable.
 reverse_input_char_index = dict(
     (i, word) for word, i in input_word_index.items())
-reverse_input_char_index[0]=''
+reverse_input_char_index[0] = ''
 reverse_target_char_index = dict(
     (i, word) for word, i in target_word_index.items())
-reverse_target_char_index[0]=''
+reverse_target_char_index[0] = ''
 
 
 def decode_sequence(input_seq):
@@ -226,14 +226,14 @@ def decode_sequence(input_seq):
     states_value = encoder_model.predict(input_seq)
 
     # Generate empty target sequence of length 1.
-    target_seq = np.zeros((1, num_decoder_tokens ))
+    target_seq = np.zeros((1, num_decoder_tokens))
     # Populate the first character of target sequence with the start character.
     target_seq[0, target_word_index[START_SIGN]] = 1.
 
     # Sampling loop for a batch of sequences
     # (to simplify, here we assume a batch of size 1).
     stop_condition = False
-    decoded_sentence = ''
+    decoded_sentence = []
     first_draw = True
 
     while not stop_condition:
@@ -251,14 +251,14 @@ def decode_sequence(input_seq):
             first_draw = False
         else:
             sampled_token_index = np.argmax(output_tokens[0, -1, 1:-1])
-        print ("sampled_token_index",sampled_token_index, "p= ",output_tokens[0, -1, sampled_token_index])
+        print("sampled_token_index", sampled_token_index, "p= ", output_tokens[0, -1, sampled_token_index])
         sampled_word = reverse_target_char_index[sampled_token_index]
-        decoded_sentence += (sampled_word + ' ')
+        decoded_sentence.append(sampled_word)
 
         # Exit condition: either hit max length
         # or find stop character.
         if (sampled_word == STOP_SIGN or
-                    len(decoded_sentence) > min (max_decoder_seq_length,MAX_SEQUENCE_LENGTH+2)):
+                    len(decoded_sentence) > min(max_decoder_seq_length, MAX_SEQUENCE_LENGTH + 2)):
             stop_condition = True
 
         # Update the target sequence (of length 1).
@@ -268,7 +268,7 @@ def decode_sequence(input_seq):
         # Update states
         states_value = [h, c]
 
-    return decoded_sentence
+    return SPACE.join(decoded_sentence)
 
 
 for seq_index in range(NUM_PREDICTION):
