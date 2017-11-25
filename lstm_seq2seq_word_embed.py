@@ -9,14 +9,14 @@ import numpy as np
 import os
 
 batch_size = 64  # Batch size for training.
-epochs = 15  # Number of epochs to train for.
-latent_dim = 256  # Latent dimensionality of the encoding space.
+epochs = 30  # Number of epochs to train for.
+latent_dim = 512  # Latent dimensionality of the encoding space.
 num_samples = 10000  # Number of samples to train on.
 # Path to the data txt file on disk.
 data_path = 'conv/codedak_conv.txt'
 BASE_DIR = '../'
 GLOVE_DIR = os.path.join(BASE_DIR, 'glove.6B')
-MAX_SEQUENCE_LENGTH = 5
+MAX_SEQUENCE_LENGTH = 10
 MAX_NB_WORDS = 5000
 EMBEDDING_DIM = 100
 NUM_PREDICTION = 50
