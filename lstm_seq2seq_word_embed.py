@@ -8,7 +8,7 @@ from keras.preprocessing.sequence import pad_sequences
 import numpy as np
 import os
 
-batch_size = 64  # Batch size for training.
+batch_size = 32  # Batch size for training.
 epochs = 30  # Number of epochs to train for.
 latent_dim = 512  # Latent dimensionality of the encoding space.
 num_samples = 10000  # Number of samples to train on.
@@ -135,7 +135,8 @@ encoder_inputs = Input(shape=(None,))
 x = Embedding(num_encoder_tokens,
               EMBEDDING_DIM,
               weights=[input_embedding_matrix],
-              trainable=TRIANABLE)(encoder_inputs)
+              trainable=TRIANABLE,
+              mask_zero=True)(encoder_inputs)
 
 encoder_outputs, state_h, state_c = LSTM(latent_dim, return_state=True)(x)
 
@@ -146,7 +147,8 @@ decoder_inputs = Input(shape=(None,))
 decoder_embedding = Embedding(num_decoder_tokens,
                               EMBEDDING_DIM,
                               weights=[decoder_embedding_matrix],
-                              trainable=TRIANABLE)(decoder_inputs)
+                              trainable=TRIANABLE,
+                              mask_zero=True)(decoder_inputs)
 decoder_lstm = LSTM(latent_dim, return_sequences=True, return_state=True)
 decoder_lstm_output, _, _ = decoder_lstm(decoder_embedding, initial_state=encoder_states)
 decoder_dense = Dense(num_decoder_tokens, activation='softmax')
