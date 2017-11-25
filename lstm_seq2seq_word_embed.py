@@ -16,8 +16,8 @@ num_samples = 10000  # Number of samples to train on.
 data_path = 'conv/codedak_conv.txt'
 BASE_DIR = '../'
 GLOVE_DIR = os.path.join(BASE_DIR, 'glove.6B')
-MAX_SEQUENCE_LENGTH = 10
-MAX_NB_WORDS = 5000
+MAX_SEQUENCE_LENGTH = 20
+MAX_NB_WORDS = 500
 EMBEDDING_DIM = 100
 NUM_PREDICTION = 50
 TRIANABLE = False
@@ -162,10 +162,10 @@ decoder_target_data = np.zeros(
 
 for i, target_sequence in enumerate(target_sequences):
     for t, num in enumerate(target_sequence):
-        if t > 0 and num!=0:
+        if t > 0 :
             # decoder_target_data will be ahead by one timestep
             # and will not include the start character.
-            print ('num',num)
+            #print ('num',num)
             decoder_target_data[i, t - 1, num] = 1.
 
 # Define the model that will turn
@@ -243,14 +243,14 @@ def decode_sequence(input_seq):
         # Sample a token
         # Sample a token
         if first_draw:
-            """
-                sampled_token_index = np.random.choice(np.size(output_tokens[0, -1, :]), 1, p=output_tokens[0, -1, :])
-                sampled_token_index = sampled_token_index[0];
-            """
-            sampled_token_index = np.argmax(output_tokens[0, -1, 1:-1])
+
+            sampled_token_index = np.random.choice(np.size(output_tokens[0, -1, :]), 1, p=output_tokens[0, -1, :])
+            sampled_token_index = sampled_token_index[0];
+
+            #sampled_token_index = np.argmax(output_tokens[0, -1, 1:-1])
             first_draw = False
         else:
-            sampled_token_index = np.argmax(output_tokens[0, -1, 1:-1])
+            sampled_token_index = np.argmax(output_tokens[0, -1, :])
         print("sampled_token_index", sampled_token_index, "p= ", output_tokens[0, -1, sampled_token_index])
         sampled_word = reverse_target_char_index[sampled_token_index]
         decoded_sentence.append(sampled_word)
