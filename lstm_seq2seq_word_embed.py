@@ -9,7 +9,7 @@ import numpy as np
 import os
 
 batch_size = 64  # Batch size for training.
-epochs = 100  # Number of epochs to train for.
+epochs = 1  # Number of epochs to train for.
 latent_dim = 256  # Latent dimensionality of the encoding space.
 num_samples = 10000  # Number of samples to train on.
 # Path to the data txt file on disk.
@@ -164,10 +164,10 @@ decoder_target_data = np.zeros(
 
 for i, target_sequence in enumerate(target_sequences):
     for t, num in enumerate(target_sequence):
-        if t > 0 :
+        if t > 0:
             # decoder_target_data will be ahead by one timestep
             # and will not include the start character.
-            #print ('num',num)
+            # print ('num',num)
             decoder_target_data[i, t - 1, num] = 1.
 
 # Define the model that will turn
@@ -186,7 +186,7 @@ model.fit([encoder_input_data, decoder_input_data], decoder_target_data,
           epochs=epochs,
           validation_split=0.2)
 # Save model
-model.save('s2s_south_park_word_embed.h5')
+model.save('s2s_south_park.h5')
 
 # Next: inference mode (sampling).
 # Here's the drill:
@@ -229,9 +229,11 @@ def decode_sequence(input_seq):
     states_value = encoder_model.predict(input_seq)
 
     # Generate empty target sequence of length 1.
-    target_seq = np.zeros((1, num_decoder_tokens))
+    target_list = list()
+    target_list.append (target_word_index[START_SIGN])
+    target_seq = np.asarray(target_list)
+    target_seq = target_seq.reshape(1,target_seq.shape[0])
     # Populate the first character of target sequence with the start character.
-    target_seq[0, target_word_index[START_SIGN]] = 1.
 
     # Sampling loop for a batch of sequences
     # (to simplify, here we assume a batch of size 1).
@@ -250,7 +252,7 @@ def decode_sequence(input_seq):
             sampled_token_index = np.random.choice(np.size(output_tokens[0, -1, :]), 1, p=output_tokens[0, -1, :])
             sampled_token_index = sampled_token_index[0];
 
-            #sampled_token_index = np.argmax(output_tokens[0, -1, 1:-1])
+            # sampled_token_index = np.argmax(output_tokens[0, -1, 1:-1])
             first_draw = False
         else:
             sampled_token_index = np.argmax(output_tokens[0, -1, :])
@@ -265,9 +267,10 @@ def decode_sequence(input_seq):
             stop_condition = True
 
         # Update the target sequence (of length 1).
-        target_seq = np.zeros((1, num_decoder_tokens))
-        target_seq[0, sampled_token_index] = 1.
-
+        target_list.append(sampled_token_index)
+        target_seq = np.asarray(target_list)
+        target_seq = target_seq.reshape(1, target_seq.shape[0])
+        print("target_seq shape",target_seq.shape)
         # Update states
         states_value = [h, c]
 
