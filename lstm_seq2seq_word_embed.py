@@ -20,7 +20,7 @@ MAX_SEQUENCE_LENGTH = 20
 MAX_NB_WORDS = 2000
 EMBEDDING_DIM = 100
 NUM_PREDICTION = 50
-TRIANABLE = True
+TRIANABLE = False
 START_SIGN = '*'
 SPACE = ' '
 STOP_SIGN = '.'
@@ -185,7 +185,7 @@ model.fit([encoder_input_data, decoder_input_data], decoder_target_data,
           epochs=epochs,
           validation_split=0.2)
 # Save model
-model.save('s2s_south_park_100_trainable.h5')
+model.save('s2s_south_park_100_single_target.h5')
 
 # Next: inference mode (sampling).
 # Here's the drill:
@@ -261,6 +261,7 @@ def decode_sequence(input_seq):
             stop_condition = True
 
         # Update the target sequence
+        target_list=list()
         target_list.append(sampled_token_index)
         target_seq = np.asarray(target_list)
         target_seq = target_seq.reshape(1, target_seq.shape[0])
