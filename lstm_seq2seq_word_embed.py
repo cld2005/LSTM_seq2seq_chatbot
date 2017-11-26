@@ -49,8 +49,7 @@ for line in lines[: min(num_samples, len(lines) - 1)]:
     input_text_words = input_text.split(SPACE)
     input_text_words = [word for word in input_text_words if
                         embeddings_index.has_key(word)]  # take only words in the word embedding
-    input_text = SPACE.join(input_text_words[0:-1])
-
+    input_text = SPACE.join(input_text_words[:])
     target_text_words = target_text.split(SPACE)
     target_text_words = [word for word in target_text_words if
                          embeddings_index.has_key(word)]  # take only words in the word embedding
@@ -58,7 +57,7 @@ for line in lines[: min(num_samples, len(lines) - 1)]:
     if target_len > MAX_SEQUENCE_LENGTH:
         target_text = SPACE.join(target_text_words[0:MAX_SEQUENCE_LENGTH])
     else:
-        target_text = SPACE.join(target_text_words[0:-1])
+        target_text = SPACE.join(target_text_words[:])
 
     target_text = START_SIGN + SPACE + target_text + SPACE + STOP_SIGN
     input_texts.append(input_text)
@@ -176,7 +175,7 @@ model = Model([encoder_inputs, decoder_inputs], decoder_outputs)
 
 # Run training
 model.compile(optimizer='rmsprop', loss='categorical_crossentropy')
-model.load_weights('s2s_south_park_word_embed.h5')
+#model.load_weights('s2s_south_park_word_embed.h5')
 print('start fitting')
 print("encoder_input_data ", encoder_input_data.shape)
 print("decoder_input_data ", decoder_input_data.shape)
@@ -245,14 +244,11 @@ def decode_sequence(input_seq):
         output_tokens, h, c = decoder_model.predict(
             [target_seq] + states_value)
 
-        # Sample a token
-        # Sample a token
+
         if first_draw:
 
             sampled_token_index = np.random.choice(np.size(output_tokens[0, -1, :]), 1, p=output_tokens[0, -1, :])
             sampled_token_index = sampled_token_index[0];
-
-            # sampled_token_index = np.argmax(output_tokens[0, -1, 1:-1])
             first_draw = False
         else:
             sampled_token_index = np.argmax(output_tokens[0, -1, :])
@@ -266,7 +262,7 @@ def decode_sequence(input_seq):
                     len(decoded_sentence) > min(max_decoder_seq_length, MAX_SEQUENCE_LENGTH + 2)):
             stop_condition = True
 
-        # Update the target sequence (of length 1).
+        # Update the target sequence
         target_list.append(sampled_token_index)
         target_seq = np.asarray(target_list)
         target_seq = target_seq.reshape(1, target_seq.shape[0])
