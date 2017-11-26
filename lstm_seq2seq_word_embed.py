@@ -68,15 +68,15 @@ input_tokenizer.fit_on_texts(input_texts)
 input_sequences = input_tokenizer.texts_to_sequences(
     input_texts)  # nothing in the sequence ls larger than MAX_NB_WORDS-1
 input_word_index = input_tokenizer.word_index
-print('input_word_index: ', input_word_index)
-print('input_sequences: ', input_sequences)
+# print('input_word_index: ', input_word_index)
+# print('input_sequences: ', input_sequences)
 
 target_tokenizer = Tokenizer(num_words=MAX_NB_WORDS + 2, filters=FILTER_STRING)
 target_tokenizer.fit_on_texts(target_texts)
 target_sequences = target_tokenizer.texts_to_sequences(target_texts)
 target_word_index = target_tokenizer.word_index
-print('target_word_index: ', target_word_index)
-print('target_sequences: ', target_sequences)
+# print('target_word_index: ', target_word_index)
+# print('target_sequences: ', target_sequences)
 
 num_encoder_tokens = min(len(input_word_index), MAX_NB_WORDS) + 1
 num_decoder_tokens = min(len(target_word_index), MAX_NB_WORDS + 2) + 1
@@ -185,7 +185,7 @@ model.fit([encoder_input_data, decoder_input_data], decoder_target_data,
           epochs=epochs,
           validation_split=0.2)
 # Save model
-model.save('s2s_south_park_200.h5')
+model.save('s2s_south_park_200_trainable.h5')
 
 # Next: inference mode (sampling).
 # Here's the drill:
@@ -229,9 +229,9 @@ def decode_sequence(input_seq):
 
     # Generate empty target sequence of length 1.
     target_list = list()
-    target_list.append (target_word_index[START_SIGN])
+    target_list.append(target_word_index[START_SIGN])
     target_seq = np.asarray(target_list)
-    target_seq = target_seq.reshape(1,target_seq.shape[0])
+    target_seq = target_seq.reshape(1, target_seq.shape[0])
     # Populate the first character of target sequence with the start character.
 
     # Sampling loop for a batch of sequences
@@ -244,9 +244,7 @@ def decode_sequence(input_seq):
         output_tokens, h, c = decoder_model.predict(
             [target_seq] + states_value)
 
-
         if first_draw:
-
             sampled_token_index = np.random.choice(np.size(output_tokens[0, -1, :]), 1, p=output_tokens[0, -1, :])
             sampled_token_index = sampled_token_index[0];
             first_draw = False
@@ -266,7 +264,7 @@ def decode_sequence(input_seq):
         target_list.append(sampled_token_index)
         target_seq = np.asarray(target_list)
         target_seq = target_seq.reshape(1, target_seq.shape[0])
-        print("target_seq shape",target_seq.shape)
+        print("target_seq shape", target_seq.shape)
         # Update states
         states_value = [h, c]
 
