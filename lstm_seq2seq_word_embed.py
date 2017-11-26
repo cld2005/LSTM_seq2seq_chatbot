@@ -175,7 +175,7 @@ model = Model([encoder_inputs, decoder_inputs], decoder_outputs)
 
 # Run training
 model.compile(optimizer='rmsprop', loss='categorical_crossentropy')
-model.load_weights('s2s_south_park.h5')
+#model.load_weights('s2s_south_park.h5')
 print('start fitting')
 print("encoder_input_data ", encoder_input_data.shape)
 print("decoder_input_data ", decoder_input_data.shape)
