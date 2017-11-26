@@ -9,7 +9,7 @@ import numpy as np
 import os
 
 batch_size = 64  # Batch size for training.
-epochs = 100  # Number of epochs to train for.
+epochs = 1  # Number of epochs to train for.
 latent_dim = 256  # Latent dimensionality of the encoding space.
 num_samples = 10000  # Number of samples to train on.
 # Path to the data txt file on disk.
@@ -175,7 +175,7 @@ model = Model([encoder_inputs, decoder_inputs], decoder_outputs)
 
 # Run training
 model.compile(optimizer='rmsprop', loss='categorical_crossentropy')
-#model.load_weights('s2s_south_park.h5')
+model.load_weights('s2s_south_park_200.h5')
 print('start fitting')
 print("encoder_input_data ", encoder_input_data.shape)
 print("decoder_input_data ", decoder_input_data.shape)
@@ -185,7 +185,7 @@ model.fit([encoder_input_data, decoder_input_data], decoder_target_data,
           epochs=epochs,
           validation_split=0.2)
 # Save model
-model.save('s2s_south_park_100_single_target.h5')
+model.save('s2s_south_park_201_single_target.h5')
 
 # Next: inference mode (sampling).
 # Here's the drill:
