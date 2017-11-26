@@ -1,0 +1,924 @@
+loading Glove.6B 100 embedding.
+Found 400000 word vectors.
+Number of samples: 10000
+Number of encoder input: 10000
+Number of decoder input: 10000
+Number of unique input tokens: 2001
+Number of unique output tokens: 2003
+Max sequence length for inputs: 152
+Max sequence length for outputs: 22
+Preparing embedding matrix.
+prepare input embedding matrix
+hit_count : 1999 percentage:  0.99900049975
+prepare decoder embedding matrix
+Define an input sequence and process it
+decoder_outputs:  Tensor("dense_1/div:0", shape=(?, ?, 2003), dtype=float32)
+start fitting
+encoder_input_data  (10000, 20)
+decoder_input_data  (10000, 22)
+decoder_target_data  (10000, 22, 2003)
+Train on 8000 samples, validate on 2000 samples
+Epoch 1/1
+  64/8000 [..............................] - ETA: 81s - loss: 0.1055 128/8000 [..............................] - ETA: 51s - loss: 0.1294 192/8000 [..............................] - ETA: 41s - loss: 0.1385 256/8000 [..............................] - ETA: 36s - loss: 0.1455 320/8000 [>.............................] - ETA: 33s - loss: 0.1455 384/8000 [>.............................] - ETA: 31s - loss: 0.1406 448/8000 [>.............................] - ETA: 29s - loss: 0.1379 512/8000 [>.............................] - ETA: 28s - loss: 0.1320 576/8000 [=>............................] - ETA: 27s - loss: 0.1316 640/8000 [=>............................] - ETA: 26s - loss: 0.1261 704/8000 [=>............................] - ETA: 25s - loss: 0.1230 768/8000 [=>............................] - ETA: 25s - loss: 0.1213 832/8000 [==>...........................] - ETA: 24s - loss: 0.1163 896/8000 [==>...........................] - ETA: 24s - loss: 0.1141 960/8000 [==>...........................] - ETA: 23s - loss: 0.11241024/8000 [==>...........................] - ETA: 23s - loss: 0.10971088/8000 [===>..........................] - ETA: 22s - loss: 0.10901152/8000 [===>..........................] - ETA: 22s - loss: 0.10821216/8000 [===>..........................] - ETA: 22s - loss: 0.10771280/8000 [===>..........................] - ETA: 21s - loss: 0.10671344/8000 [====>.........................] - ETA: 21s - loss: 0.10621408/8000 [====>.........................] - ETA: 21s - loss: 0.10501472/8000 [====>.........................] - ETA: 20s - loss: 0.10451536/8000 [====>.........................] - ETA: 20s - loss: 0.10361600/8000 [=====>........................] - ETA: 20s - loss: 0.10231664/8000 [=====>........................] - ETA: 20s - loss: 0.10071728/8000 [=====>........................] - ETA: 19s - loss: 0.09931792/8000 [=====>........................] - ETA: 19s - loss: 0.09911856/8000 [=====>........................] - ETA: 19s - loss: 0.09961920/8000 [======>.......................] - ETA: 19s - loss: 0.10011984/8000 [======>.......................] - ETA: 18s - loss: 0.09962048/8000 [======>.......................] - ETA: 18s - loss: 0.09912112/8000 [======>.......................] - ETA: 18s - loss: 0.09872176/8000 [=======>......................] - ETA: 18s - loss: 0.09842240/8000 [=======>......................] - ETA: 17s - loss: 0.09832304/8000 [=======>......................] - ETA: 17s - loss: 0.09792368/8000 [=======>......................] - ETA: 17s - loss: 0.09702432/8000 [========>.....................] - ETA: 17s - loss: 0.09622496/8000 [========>.....................] - ETA: 16s - loss: 0.09592560/8000 [========>.....................] - ETA: 16s - loss: 0.09612624/8000 [========>.....................] - ETA: 16s - loss: 0.09512688/8000 [=========>....................] - ETA: 16s - loss: 0.09472752/8000 [=========>....................] - ETA: 16s - loss: 0.09462816/8000 [=========>....................] - ETA: 15s - loss: 0.09412880/8000 [=========>....................] - ETA: 15s - loss: 0.09472944/8000 [==========>...................] - ETA: 15s - loss: 0.09423008/8000 [==========>...................] - ETA: 15s - loss: 0.09413072/8000 [==========>...................] - ETA: 14s - loss: 0.09463136/8000 [==========>...................] - ETA: 14s - loss: 0.09483200/8000 [===========>..................] - ETA: 14s - loss: 0.09453264/8000 [===========>..................] - ETA: 14s - loss: 0.09423328/8000 [===========>..................] - ETA: 14s - loss: 0.09373392/8000 [===========>..................] - ETA: 13s - loss: 0.09353456/8000 [===========>..................] - ETA: 13s - loss: 0.09353520/8000 [============>.................] - ETA: 13s - loss: 0.09293584/8000 [============>.................] - ETA: 13s - loss: 0.09313648/8000 [============>.................] - ETA: 13s - loss: 0.09283712/8000 [============>.................] - ETA: 12s - loss: 0.09233776/8000 [=============>................] - ETA: 12s - loss: 0.09243840/8000 [=============>................] - ETA: 12s - loss: 0.09203904/8000 [=============>................] - ETA: 12s - loss: 0.09223968/8000 [=============>................] - ETA: 12s - loss: 0.09234032/8000 [==============>...............] - ETA: 11s - loss: 0.09184096/8000 [==============>...............] - ETA: 11s - loss: 0.09174160/8000 [==============>...............] - ETA: 11s - loss: 0.09164224/8000 [==============>...............] - ETA: 11s - loss: 0.09184288/8000 [===============>..............] - ETA: 11s - loss: 0.09154352/8000 [===============>..............] - ETA: 10s - loss: 0.09224416/8000 [===============>..............] - ETA: 10s - loss: 0.09254480/8000 [===============>..............] - ETA: 10s - loss: 0.09224544/8000 [================>.............] - ETA: 10s - loss: 0.09264608/8000 [================>.............] - ETA: 10s - loss: 0.09314672/8000 [================>.............] - ETA: 9s - loss: 0.0930 4736/8000 [================>.............] - ETA: 9s - loss: 0.09304800/8000 [=================>............] - ETA: 9s - loss: 0.09304864/8000 [=================>............] - ETA: 9s - loss: 0.09284928/8000 [=================>............] - ETA: 9s - loss: 0.09314992/8000 [=================>............] - ETA: 8s - loss: 0.09285056/8000 [=================>............] - ETA: 8s - loss: 0.09285120/8000 [==================>...........] - ETA: 8s - loss: 0.09295184/8000 [==================>...........] - ETA: 8s - loss: 0.09305248/8000 [==================>...........] - ETA: 8s - loss: 0.09335312/8000 [==================>...........] - ETA: 8s - loss: 0.09355376/8000 [===================>..........] - ETA: 7s - loss: 0.09335440/8000 [===================>..........] - ETA: 7s - loss: 0.09335504/8000 [===================>..........] - ETA: 7s - loss: 0.09345568/8000 [===================>..........] - ETA: 7s - loss: 0.09305632/8000 [====================>.........] - ETA: 7s - loss: 0.09285696/8000 [====================>.........] - ETA: 6s - loss: 0.09265760/8000 [====================>.........] - ETA: 6s - loss: 0.09265824/8000 [====================>.........] - ETA: 6s - loss: 0.09255888/8000 [=====================>........] - ETA: 6s - loss: 0.09245952/8000 [=====================>........] - ETA: 6s - loss: 0.09256016/8000 [=====================>........] - ETA: 5s - loss: 0.09256080/8000 [=====================>........] - ETA: 5s - loss: 0.09236144/8000 [======================>.......] - ETA: 5s - loss: 0.09246208/8000 [======================>.......] - ETA: 5s - loss: 0.09246272/8000 [======================>.......] - ETA: 5s - loss: 0.09236336/8000 [======================>.......] - ETA: 4s - loss: 0.09236400/8000 [=======================>......] - ETA: 4s - loss: 0.09236464/8000 [=======================>......] - ETA: 4s - loss: 0.09186528/8000 [=======================>......] - ETA: 4s - loss: 0.09196592/8000 [=======================>......] - ETA: 4s - loss: 0.09176656/8000 [=======================>......] - ETA: 3s - loss: 0.09186720/8000 [========================>.....] - ETA: 3s - loss: 0.09166784/8000 [========================>.....] - ETA: 3s - loss: 0.09156848/8000 [========================>.....] - ETA: 3s - loss: 0.09146912/8000 [========================>.....] - ETA: 3s - loss: 0.09156976/8000 [=========================>....] - ETA: 3s - loss: 0.09157040/8000 [=========================>....] - ETA: 2s - loss: 0.09157104/8000 [=========================>....] - ETA: 2s - loss: 0.09147168/8000 [=========================>....] - ETA: 2s - loss: 0.09197232/8000 [==========================>...] - ETA: 2s - loss: 0.09197296/8000 [==========================>...] - ETA: 2s - loss: 0.09197360/8000 [==========================>...] - ETA: 1s - loss: 0.09187424/8000 [==========================>...] - ETA: 1s - loss: 0.09177488/8000 [===========================>..] - ETA: 1s - loss: 0.09167552/8000 [===========================>..] - ETA: 1s - loss: 0.09157616/8000 [===========================>..] - ETA: 1s - loss: 0.09157680/8000 [===========================>..] - ETA: 0s - loss: 0.09147744/8000 [============================>.] - ETA: 0s - loss: 0.09117808/8000 [============================>.] - ETA: 0s - loss: 0.09127872/8000 [============================>.] - ETA: 0s - loss: 0.09107936/8000 [============================>.] - ETA: 0s - loss: 0.09108000/8000 [==============================] - 25s - loss: 0.0910 - val_loss: 9.2520
+---------------------------------------
+sampled_token_index 97 p=  0.990901
+target_seq shape (1, 1)
+sampled_token_index 88 p=  0.994717
+target_seq shape (1, 1)
+sampled_token_index 60 p=  0.86428
+target_seq shape (1, 1)
+sampled_token_index 749 p=  0.998684
+target_seq shape (1, 1)
+sampled_token_index 27 p=  0.999382
+target_seq shape (1, 1)
+sampled_token_index 197 p=  0.96462
+target_seq shape (1, 1)
+sampled_token_index 46 p=  0.999288
+target_seq shape (1, 1)
+sampled_token_index 79 p=  0.999581
+target_seq shape (1, 1)
+sampled_token_index 1047 p=  0.994127
+target_seq shape (1, 1)
+sampled_token_index 1774 p=  0.999265
+target_seq shape (1, 1)
+sampled_token_index 208 p=  0.955682
+target_seq shape (1, 1)
+sampled_token_index 2 p=  0.999357
+target_seq shape (1, 1)
+Input sentence: not the hacking and gagging and spitting part please
+Decoded sentence: okay then how bout we try out some french saturday night .
+---------------------------------------
+sampled_token_index 1775 p=  0.987798
+target_seq shape (1, 1)
+sampled_token_index 2 p=  0.999998
+target_seq shape (1, 1)
+Input sentence: no no its my fault we didnt have a proper introduction
+Decoded sentence: cameron .
+---------------------------------------
+sampled_token_index 551 p=  0.985124
+target_seq shape (1, 1)
+sampled_token_index 36 p=  0.964246
+target_seq shape (1, 1)
+sampled_token_index 81 p=  0.82855
+target_seq shape (1, 1)
+sampled_token_index 7 p=  0.560024
+target_seq shape (1, 1)
+sampled_token_index 60 p=  0.45509
+target_seq shape (1, 1)
+sampled_token_index 60 p=  0.460587
+target_seq shape (1, 1)
+sampled_token_index 3 p=  0.999145
+target_seq shape (1, 1)
+sampled_token_index 22 p=  0.664612
+target_seq shape (1, 1)
+sampled_token_index 8 p=  0.297635
+target_seq shape (1, 1)
+sampled_token_index 2 p=  0.999278
+target_seq shape (1, 1)
+Input sentence: the thing is cameron im at the mercy of a particularly hideous breed of loser my sister i cant date until she does
+Decoded sentence: seems like she a how how you know it .
+---------------------------------------
+sampled_token_index 87 p=  0.0179202
+target_seq shape (1, 1)
+sampled_token_index 47 p=  0.8866
+target_seq shape (1, 1)
+sampled_token_index 432 p=  0.961095
+target_seq shape (1, 1)
+sampled_token_index 2 p=  0.997831
+target_seq shape (1, 1)
+Input sentence: why
+Decoded sentence: come here honey .
+---------------------------------------
+sampled_token_index 108 p=  0.986034
+target_seq shape (1, 1)
+sampled_token_index 14 p=  0.983346
+target_seq shape (1, 1)
+sampled_token_index 68 p=  0.971113
+target_seq shape (1, 1)
+sampled_token_index 12 p=  0.999738
+target_seq shape (1, 1)
+sampled_token_index 4 p=  0.990484
+target_seq shape (1, 1)
+sampled_token_index 54 p=  0.964559
+target_seq shape (1, 1)
+sampled_token_index 26 p=  0.99113
+target_seq shape (1, 1)
+sampled_token_index 2 p=  0.999988
+target_seq shape (1, 1)
+Input sentence: gosh if only we could find kat a boyfriend
+Decoded sentence: let me see what i can do .
+---------------------------------------
+sampled_token_index 55 p=  0.96636
+target_seq shape (1, 1)
+sampled_token_index 68 p=  0.852286
+target_seq shape (1, 1)
+sampled_token_index 40 p=  0.966025
+target_seq shape (1, 1)
+sampled_token_index 553 p=  0.977776
+target_seq shape (1, 1)
+sampled_token_index 20 p=  0.994075
+target_seq shape (1, 1)
+sampled_token_index 5 p=  0.996208
+target_seq shape (1, 1)
+sampled_token_index 2 p=  0.999912
+target_seq shape (1, 1)
+Input sentence: cesc ma tete this is my head
+Decoded sentence: right see youre ready for the .
+---------------------------------------
+sampled_token_index 41 p=  0.987567
+target_seq shape (1, 1)
+sampled_token_index 121 p=  0.983005
+target_seq shape (1, 1)
+sampled_token_index 221 p=  0.972052
+target_seq shape (1, 1)
+sampled_token_index 4 p=  0.992168
+target_seq shape (1, 1)
+sampled_token_index 50 p=  0.998693
+target_seq shape (1, 1)
+sampled_token_index 247 p=  0.997973
+target_seq shape (1, 1)
+sampled_token_index 33 p=  0.997429
+target_seq shape (1, 1)
+sampled_token_index 2 p=  0.95348
+target_seq shape (1, 1)
+Input sentence: how is our little find the wench a date plan progressing
+Decoded sentence: well theres someone i think might be .
+---------------------------------------
+sampled_token_index 136 p=  0.0016488
+target_seq shape (1, 1)
+sampled_token_index 21 p=  0.299577
+target_seq shape (1, 1)
+sampled_token_index 2 p=  0.938108
+target_seq shape (1, 1)
+Input sentence: there
+Decoded sentence: whats not .
+---------------------------------------
+sampled_token_index 4 p=  0.998009
+target_seq shape (1, 1)
+sampled_token_index 31 p=  0.973192
+target_seq shape (1, 1)
+sampled_token_index 3 p=  0.990938
+target_seq shape (1, 1)
+sampled_token_index 6 p=  0.985259
+target_seq shape (1, 1)
+sampled_token_index 159 p=  0.934012
+target_seq shape (1, 1)
+sampled_token_index 23 p=  0.9063
+target_seq shape (1, 1)
+sampled_token_index 405 p=  0.983588
+target_seq shape (1, 1)
+sampled_token_index 3 p=  0.999564
+target_seq shape (1, 1)
+sampled_token_index 10 p=  0.987896
+target_seq shape (1, 1)
+sampled_token_index 11 p=  0.996623
+target_seq shape (1, 1)
+sampled_token_index 39 p=  0.960874
+target_seq shape (1, 1)
+sampled_token_index 868 p=  0.976713
+target_seq shape (1, 1)
+sampled_token_index 345 p=  0.995164
+target_seq shape (1, 1)
+sampled_token_index 27 p=  0.976601
+target_seq shape (1, 1)
+sampled_token_index 176 p=  0.96754
+target_seq shape (1, 1)
+sampled_token_index 77 p=  0.999268
+target_seq shape (1, 1)
+sampled_token_index 31 p=  0.993423
+target_seq shape (1, 1)
+sampled_token_index 2 p=  0.813738
+target_seq shape (1, 1)
+Input sentence: you got something on your mind
+Decoded sentence: i on you to help my cause you and that are obviously arent we ever going on .
+---------------------------------------
+sampled_token_index 40 p=  0.971504
+target_seq shape (1, 1)
+sampled_token_index 802 p=  0.993361
+target_seq shape (1, 1)
+sampled_token_index 2 p=  0.999587
+target_seq shape (1, 1)
+Input sentence: you have my word as a gentleman
+Decoded sentence: youre sweet .
+---------------------------------------
+sampled_token_index 1048 p=  0.98191
+target_seq shape (1, 1)
+sampled_token_index 283 p=  0.98511
+target_seq shape (1, 1)
+sampled_token_index 130 p=  0.990364
+target_seq shape (1, 1)
+sampled_token_index 357 p=  0.996476
+target_seq shape (1, 1)
+sampled_token_index 10 p=  0.998111
+target_seq shape (1, 1)
+sampled_token_index 4 p=  0.99996
+target_seq shape (1, 1)
+sampled_token_index 90 p=  0.98901
+target_seq shape (1, 1)
+sampled_token_index 176 p=  0.474043
+target_seq shape (1, 1)
+sampled_token_index 312 p=  0.972961
+target_seq shape (1, 1)
+sampled_token_index 7 p=  0.999361
+target_seq shape (1, 1)
+sampled_token_index 304 p=  0.988198
+target_seq shape (1, 1)
+sampled_token_index 5 p=  0.999687
+target_seq shape (1, 1)
+sampled_token_index 2 p=  0.999997
+target_seq shape (1, 1)
+Input sentence: how do you get your hair to look like that
+Decoded sentence: deep every two days and i never ever use a without the .
+---------------------------------------
+sampled_token_index 4 p=  0.97944
+target_seq shape (1, 1)
+sampled_token_index 99 p=  0.963365
+target_seq shape (1, 1)
+sampled_token_index 99 p=  0.98202
+target_seq shape (1, 1)
+sampled_token_index 99 p=  0.987712
+target_seq shape (1, 1)
+sampled_token_index 427 p=  0.944167
+target_seq shape (1, 1)
+sampled_token_index 52 p=  0.988282
+target_seq shape (1, 1)
+sampled_token_index 32 p=  0.80418
+target_seq shape (1, 1)
+sampled_token_index 4 p=  0.996098
+target_seq shape (1, 1)
+sampled_token_index 69 p=  0.949083
+target_seq shape (1, 1)
+sampled_token_index 21 p=  0.997713
+target_seq shape (1, 1)
+sampled_token_index 656 p=  0.998875
+target_seq shape (1, 1)
+sampled_token_index 23 p=  0.993433
+target_seq shape (1, 1)
+sampled_token_index 803 p=  0.994815
+target_seq shape (1, 1)
+sampled_token_index 533 p=  0.991863
+target_seq shape (1, 1)
+sampled_token_index 2 p=  0.999886
+target_seq shape (1, 1)
+Input sentence: sure have
+Decoded sentence: i really really really wanna go but i cant not unless my sister goes .
+---------------------------------------
+sampled_token_index 74 p=  0.997754
+target_seq shape (1, 1)
+sampled_token_index 289 p=  0.992371
+target_seq shape (1, 1)
+sampled_token_index 35 p=  0.953908
+target_seq shape (1, 1)
+sampled_token_index 76 p=  0.833342
+target_seq shape (1, 1)
+sampled_token_index 176 p=  0.997838
+target_seq shape (1, 1)
+sampled_token_index 232 p=  0.991674
+target_seq shape (1, 1)
+sampled_token_index 73 p=  0.893458
+target_seq shape (1, 1)
+sampled_token_index 94 p=  0.94521
+target_seq shape (1, 1)
+sampled_token_index 15 p=  0.98839
+target_seq shape (1, 1)
+sampled_token_index 11 p=  0.987522
+target_seq shape (1, 1)
+sampled_token_index 869 p=  0.997465
+target_seq shape (1, 1)
+sampled_token_index 163 p=  0.957658
+target_seq shape (1, 1)
+sampled_token_index 1194 p=  0.99844
+target_seq shape (1, 1)
+sampled_token_index 7 p=  0.999992
+target_seq shape (1, 1)
+sampled_token_index 168 p=  0.989922
+target_seq shape (1, 1)
+sampled_token_index 11 p=  0.999261
+target_seq shape (1, 1)
+sampled_token_index 1777 p=  0.999146
+target_seq shape (1, 1)
+sampled_token_index 2 p=  0.999716
+target_seq shape (1, 1)
+Input sentence: so thats the kind of guy she likes pretty ones
+Decoded sentence: who knows all ive ever heard her say is that shed before dating a guy that smokes .
+---------------------------------------
+sampled_token_index 441 p=  0.0247189
+target_seq shape (1, 1)
+sampled_token_index 36 p=  0.992447
+target_seq shape (1, 1)
+sampled_token_index 160 p=  0.923488
+target_seq shape (1, 1)
+sampled_token_index 487 p=  0.993955
+target_seq shape (1, 1)
+sampled_token_index 46 p=  0.998808
+target_seq shape (1, 1)
+sampled_token_index 264 p=  0.696006
+target_seq shape (1, 1)
+sampled_token_index 265 p=  0.97828
+target_seq shape (1, 1)
+sampled_token_index 2 p=  0.998693
+target_seq shape (1, 1)
+Input sentence: hi
+Decoded sentence: looks like things worked out tonight huh .
+---------------------------------------
+sampled_token_index 2 p=  0.997899
+target_seq shape (1, 1)
+Input sentence: have fun tonight
+Decoded sentence: .
+---------------------------------------
+sampled_token_index 4 p=  0.99769
+target_seq shape (1, 1)
+sampled_token_index 28 p=  0.921553
+target_seq shape (1, 1)
+sampled_token_index 2 p=  0.978277
+target_seq shape (1, 1)
+Input sentence: i looked for you back at the party but you always seemed to be occupied
+Decoded sentence: i was .
+---------------------------------------
+sampled_token_index 88 p=  0.936271
+target_seq shape (1, 1)
+sampled_token_index 56 p=  0.846192
+target_seq shape (1, 1)
+sampled_token_index 35 p=  0.872606
+target_seq shape (1, 1)
+sampled_token_index 3 p=  0.998001
+target_seq shape (1, 1)
+sampled_token_index 103 p=  0.988189
+target_seq shape (1, 1)
+sampled_token_index 6 p=  0.998349
+target_seq shape (1, 1)
+sampled_token_index 94 p=  0.951187
+target_seq shape (1, 1)
+sampled_token_index 2 p=  0.970565
+target_seq shape (1, 1)
+Input sentence: well no
+Decoded sentence: then thats all you had to say .
+---------------------------------------
+sampled_token_index 139 p=  0.985371
+target_seq shape (1, 1)
+sampled_token_index 190 p=  0.995777
+target_seq shape (1, 1)
+sampled_token_index 45 p=  0.962844
+target_seq shape (1, 1)
+sampled_token_index 4 p=  0.995761
+target_seq shape (1, 1)
+sampled_token_index 103 p=  0.986681
+target_seq shape (1, 1)
+sampled_token_index 6 p=  0.997017
+target_seq shape (1, 1)
+sampled_token_index 277 p=  0.928941
+target_seq shape (1, 1)
+sampled_token_index 57 p=  0.997125
+target_seq shape (1, 1)
+sampled_token_index 124 p=  0.99919
+target_seq shape (1, 1)
+sampled_token_index 442 p=  0.99922
+target_seq shape (1, 1)
+sampled_token_index 38 p=  0.890996
+target_seq shape (1, 1)
+sampled_token_index 25 p=  0.999882
+target_seq shape (1, 1)
+sampled_token_index 2 p=  0.999903
+target_seq shape (1, 1)
+Input sentence: me this endless blonde babble im like boring myself
+Decoded sentence: thank god if i had to hear one more story about your .
+---------------------------------------
+sampled_token_index 36 p=  0.970439
+target_seq shape (1, 1)
+sampled_token_index 23 p=  0.95608
+target_seq shape (1, 1)
+sampled_token_index 937 p=  0.996053
+target_seq shape (1, 1)
+sampled_token_index 9 p=  0.989239
+target_seq shape (1, 1)
+sampled_token_index 804 p=  0.989754
+target_seq shape (1, 1)
+sampled_token_index 2 p=  0.997458
+target_seq shape (1, 1)
+Input sentence: the real you
+Decoded sentence: like my fear of wearing .
+---------------------------------------
+sampled_token_index 19 p=  0.918459
+target_seq shape (1, 1)
+sampled_token_index 2 p=  0.999365
+target_seq shape (1, 1)
+Input sentence: im kidding you know how sometimes you just become this persona and you dont know how to quit
+Decoded sentence: no .
+---------------------------------------
+sampled_token_index 125 p=  0.91959
+target_seq shape (1, 1)
+sampled_token_index 52 p=  0.920019
+target_seq shape (1, 1)
+sampled_token_index 2 p=  0.98997
+target_seq shape (1, 1)
+Input sentence: wow
+Decoded sentence: lets go .
+---------------------------------------
+sampled_token_index 4 p=  0.93364
+target_seq shape (1, 1)
+sampled_token_index 313 p=  0.982348
+target_seq shape (1, 1)
+sampled_token_index 42 p=  0.984396
+target_seq shape (1, 1)
+sampled_token_index 2 p=  0.999845
+target_seq shape (1, 1)
+Input sentence: she okay
+Decoded sentence: i hope so .
+---------------------------------------
+sampled_token_index 63 p=  0.901156
+target_seq shape (1, 1)
+sampled_token_index 26 p=  0.884601
+target_seq shape (1, 1)
+sampled_token_index 21 p=  0.942303
+target_seq shape (1, 1)
+sampled_token_index 2 p=  0.999856
+target_seq shape (1, 1)
+Input sentence: they do to
+Decoded sentence: they do not .
+---------------------------------------
+sampled_token_index 19 p=  0.977719
+target_seq shape (1, 1)
+sampled_token_index 2 p=  0.999813
+target_seq shape (1, 1)
+Input sentence: did you change your hair
+Decoded sentence: no .
+---------------------------------------
+sampled_token_index 74 p=  0.94266
+target_seq shape (1, 1)
+sampled_token_index 2 p=  0.99997
+target_seq shape (1, 1)
+Input sentence: where did he go he was just here
+Decoded sentence: who .
+---------------------------------------
+sampled_token_index 80 p=  0.350354
+target_seq shape (1, 1)
+sampled_token_index 3 p=  0.996814
+target_seq shape (1, 1)
+sampled_token_index 240 p=  0.970102
+target_seq shape (1, 1)
+sampled_token_index 282 p=  0.950797
+target_seq shape (1, 1)
+sampled_token_index 14 p=  0.988365
+target_seq shape (1, 1)
+sampled_token_index 7 p=  0.990546
+target_seq shape (1, 1)
+sampled_token_index 428 p=  0.9039
+target_seq shape (1, 1)
+sampled_token_index 1775 p=  0.97868
+target_seq shape (1, 1)
+sampled_token_index 2 p=  0.998556
+target_seq shape (1, 1)
+Input sentence: great
+Decoded sentence: would you mind getting me a drink cameron .
+---------------------------------------
+sampled_token_index 15 p=  0.988333
+target_seq shape (1, 1)
+sampled_token_index 30 p=  0.9451
+target_seq shape (1, 1)
+sampled_token_index 83 p=  0.89007
+target_seq shape (1, 1)
+sampled_token_index 1407 p=  0.993034
+target_seq shape (1, 1)
+sampled_token_index 2 p=  0.999766
+target_seq shape (1, 1)
+Input sentence: he practically proposed when he found out we had the same dermatologist i mean dr is great an all but hes not exactly relevant party conversation
+Decoded sentence: is he or dry .
+---------------------------------------
+sampled_token_index 429 p=  0.98728
+target_seq shape (1, 1)
+sampled_token_index 4 p=  0.999911
+target_seq shape (1, 1)
+sampled_token_index 1195 p=  0.994699
+target_seq shape (1, 1)
+sampled_token_index 45 p=  0.998928
+target_seq shape (1, 1)
+sampled_token_index 5 p=  0.9798
+target_seq shape (1, 1)
+sampled_token_index 198 p=  0.99572
+target_seq shape (1, 1)
+sampled_token_index 58 p=  0.938806
+target_seq shape (1, 1)
+sampled_token_index 346 p=  0.85322
+target_seq shape (1, 1)
+sampled_token_index 6 p=  0.999914
+target_seq shape (1, 1)
+sampled_token_index 51 p=  0.99466
+target_seq shape (1, 1)
+sampled_token_index 6 p=  0.999983
+target_seq shape (1, 1)
+sampled_token_index 52 p=  0.810604
+target_seq shape (1, 1)
+sampled_token_index 46 p=  0.959099
+target_seq shape (1, 1)
+sampled_token_index 37 p=  0.994497
+target_seq shape (1, 1)
+sampled_token_index 39 p=  0.996352
+target_seq shape (1, 1)
+sampled_token_index 5 p=  0.99851
+target_seq shape (1, 1)
+sampled_token_index 554 p=  0.978716
+target_seq shape (1, 1)
+sampled_token_index 27 p=  0.998751
+target_seq shape (1, 1)
+sampled_token_index 326 p=  0.997399
+target_seq shape (1, 1)
+sampled_token_index 51 p=  0.954143
+target_seq shape (1, 1)
+sampled_token_index 2 p=  0.991991
+target_seq shape (1, 1)
+Input sentence: bianca i dont think the highlights of dating joey dorsey are going to include and
+Decoded sentence: sometimes i wonder if the guys were supposed to want to go out with are the ones we actually want .
+---------------------------------------
+sampled_token_index 4 p=  0.995472
+target_seq shape (1, 1)
+sampled_token_index 17 p=  0.996905
+target_seq shape (1, 1)
+sampled_token_index 24 p=  0.994969
+target_seq shape (1, 1)
+sampled_token_index 6 p=  0.999753
+target_seq shape (1, 1)
+sampled_token_index 33 p=  0.977849
+target_seq shape (1, 1)
+sampled_token_index 169 p=  0.956419
+target_seq shape (1, 1)
+sampled_token_index 1408 p=  0.991886
+target_seq shape (1, 1)
+sampled_token_index 130 p=  0.971604
+target_seq shape (1, 1)
+sampled_token_index 2 p=  0.994848
+target_seq shape (1, 1)
+Input sentence: i have to be home in twenty minutes
+Decoded sentence: i dont have to be home til two .
+---------------------------------------
+sampled_token_index 1196 p=  0.967267
+target_seq shape (1, 1)
+sampled_token_index 1409 p=  0.998449
+target_seq shape (1, 1)
+sampled_token_index 2 p=  0.996002
+target_seq shape (1, 1)
+Input sentence: so yeah ive got the sears catalog thing going and the tube sock gig thats gonna be huge and then im up for an ad for queen harry next week
+Decoded sentence: queen harry .
+---------------------------------------
+sampled_token_index 3 p=  0.0500258
+target_seq shape (1, 1)
+sampled_token_index 185 p=  0.512423
+target_seq shape (1, 1)
+sampled_token_index 14 p=  0.575588
+target_seq shape (1, 1)
+sampled_token_index 2 p=  0.297581
+target_seq shape (1, 1)
+Input sentence: neat
+Decoded sentence: you believe me .
+---------------------------------------
+sampled_token_index 3 p=  0.986064
+target_seq shape (1, 1)
+sampled_token_index 22 p=  0.998673
+target_seq shape (1, 1)
+sampled_token_index 5 p=  0.968192
+target_seq shape (1, 1)
+sampled_token_index 456 p=  0.942482
+target_seq shape (1, 1)
+sampled_token_index 4 p=  0.993229
+target_seq shape (1, 1)
+sampled_token_index 54 p=  0.996991
+target_seq shape (1, 1)
+sampled_token_index 1197 p=  0.984032
+target_seq shape (1, 1)
+sampled_token_index 52 p=  0.987269
+target_seq shape (1, 1)
+sampled_token_index 45 p=  0.980496
+target_seq shape (1, 1)
+sampled_token_index 187 p=  0.994177
+target_seq shape (1, 1)
+sampled_token_index 52 p=  0.982168
+target_seq shape (1, 1)
+sampled_token_index 2 p=  0.996184
+target_seq shape (1, 1)
+Input sentence: listen i want to talk to you about the prom
+Decoded sentence: you know the deal i can t go if doesnt go .
+---------------------------------------
+sampled_token_index 54 p=  0.975547
+target_seq shape (1, 1)
+sampled_token_index 3 p=  0.995217
+target_seq shape (1, 1)
+sampled_token_index 62 p=  0.951144
+target_seq shape (1, 1)
+sampled_token_index 457 p=  0.99743
+target_seq shape (1, 1)
+sampled_token_index 367 p=  0.901245
+target_seq shape (1, 1)
+sampled_token_index 804 p=  0.997643
+target_seq shape (1, 1)
+sampled_token_index 7 p=  0.98188
+target_seq shape (1, 1)
+sampled_token_index 2 p=  0.997791
+target_seq shape (1, 1)
+Input sentence: i have the potential to smack the crap out of you if you dont get out of my way
+Decoded sentence: can you at least start wearing a .
+---------------------------------------
+sampled_token_index 8 p=  0.950761
+target_seq shape (1, 1)
+sampled_token_index 573 p=  0.986997
+target_seq shape (1, 1)
+sampled_token_index 11 p=  0.998939
+target_seq shape (1, 1)
+sampled_token_index 15 p=  0.998111
+target_seq shape (1, 1)
+sampled_token_index 805 p=  0.997871
+target_seq shape (1, 1)
+sampled_token_index 62 p=  0.998036
+target_seq shape (1, 1)
+sampled_token_index 1198 p=  0.994012
+target_seq shape (1, 1)
+sampled_token_index 10 p=  0.947639
+target_seq shape (1, 1)
+sampled_token_index 58 p=  0.993134
+target_seq shape (1, 1)
+sampled_token_index 77 p=  0.995992
+target_seq shape (1, 1)
+sampled_token_index 2 p=  0.999913
+target_seq shape (1, 1)
+Input sentence: oh my god does this mean youre becoming normal
+Decoded sentence: it means that is playing at club and were going .
+---------------------------------------
+sampled_token_index 12 p=  0.99435
+target_seq shape (1, 1)
+sampled_token_index 26 p=  0.999203
+target_seq shape (1, 1)
+sampled_token_index 3 p=  1.0
+target_seq shape (1, 1)
+sampled_token_index 50 p=  0.985012
+target_seq shape (1, 1)
+sampled_token_index 2 p=  0.998031
+target_seq shape (1, 1)
+Input sentence: oh i thought you might have a date i dont know why im bothering to ask but are you going to bogey party saturday night
+Decoded sentence: what do you think .
+---------------------------------------
+sampled_token_index 136 p=  0.961027
+target_seq shape (1, 1)
+sampled_token_index 1049 p=  0.995467
+target_seq shape (1, 1)
+sampled_token_index 2 p=  0.992753
+target_seq shape (1, 1)
+Input sentence: youre ruining my life because you wont be normal i cant be normal
+Decoded sentence: whats normal .
+---------------------------------------
+sampled_token_index 62 p=  0.996402
+target_seq shape (1, 1)
+sampled_token_index 457 p=  0.998249
+target_seq shape (1, 1)
+sampled_token_index 16 p=  0.971491
+target_seq shape (1, 1)
+sampled_token_index 21 p=  0.994998
+target_seq shape (1, 1)
+sampled_token_index 7 p=  0.988862
+target_seq shape (1, 1)
+sampled_token_index 2 p=  0.960297
+target_seq shape (1, 1)
+Input sentence: cant you forget for just one night that youre completely wretched
+Decoded sentence: at least im not a .
+---------------------------------------
+sampled_token_index 54 p=  0.96355
+target_seq shape (1, 1)
+sampled_token_index 27 p=  0.969196
+target_seq shape (1, 1)
+sampled_token_index 52 p=  0.981174
+target_seq shape (1, 1)
+sampled_token_index 65 p=  0.996515
+target_seq shape (1, 1)
+sampled_token_index 2 p=  0.991772
+target_seq shape (1, 1)
+Input sentence: you are so completely unbalanced
+Decoded sentence: can we go now .
+---------------------------------------
+sampled_token_index 4 p=  0.997905
+target_seq shape (1, 1)
+sampled_token_index 99 p=  0.977831
+target_seq shape (1, 1)
+sampled_token_index 17 p=  0.977929
+target_seq shape (1, 1)
+sampled_token_index 50 p=  0.872152
+target_seq shape (1, 1)
+sampled_token_index 4 p=  0.985034
+target_seq shape (1, 1)
+sampled_token_index 120 p=  0.972618
+target_seq shape (1, 1)
+sampled_token_index 112 p=  0.986404
+target_seq shape (1, 1)
+sampled_token_index 1779 p=  0.986858
+target_seq shape (1, 1)
+sampled_token_index 89 p=  0.992012
+target_seq shape (1, 1)
+sampled_token_index 3 p=  0.968435
+target_seq shape (1, 1)
+sampled_token_index 55 p=  0.981665
+target_seq shape (1, 1)
+sampled_token_index 65 p=  0.993657
+target_seq shape (1, 1)
+sampled_token_index 2 p=  0.968007
+target_seq shape (1, 1)
+Input sentence: bianca i need to talk to you i need to tell you
+Decoded sentence: i really dont think i need any social from you right now .
+---------------------------------------
+sampled_token_index 40 p=  0.981573
+target_seq shape (1, 1)
+sampled_token_index 574 p=  0.987567
+target_seq shape (1, 1)
+sampled_token_index 2 p=  0.998829
+target_seq shape (1, 1)
+Input sentence: i dont get you you act like youre too good for any of this and then you go totally when you get here
+Decoded sentence: youre welcome .
+---------------------------------------
+sampled_token_index 4 p=  0.998766
+target_seq shape (1, 1)
+sampled_token_index 458 p=  0.945394
+target_seq shape (1, 1)
+sampled_token_index 4 p=  0.974084
+target_seq shape (1, 1)
+sampled_token_index 103 p=  0.887951
+target_seq shape (1, 1)
+sampled_token_index 11 p=  0.962731
+target_seq shape (1, 1)
+sampled_token_index 1780 p=  0.975637
+target_seq shape (1, 1)
+sampled_token_index 16 p=  0.98384
+target_seq shape (1, 1)
+sampled_token_index 5 p=  0.992217
+target_seq shape (1, 1)
+sampled_token_index 116 p=  0.980588
+target_seq shape (1, 1)
+sampled_token_index 11 p=  0.998762
+target_seq shape (1, 1)
+sampled_token_index 49 p=  0.930871
+target_seq shape (1, 1)
+sampled_token_index 390 p=  0.999286
+target_seq shape (1, 1)
+sampled_token_index 6 p=  0.524464
+target_seq shape (1, 1)
+sampled_token_index 5 p=  0.999996
+target_seq shape (1, 1)
+sampled_token_index 1781 p=  0.997538
+target_seq shape (1, 1)
+sampled_token_index 10 p=  0.96447
+target_seq shape (1, 1)
+sampled_token_index 4 p=  0.999547
+target_seq shape (1, 1)
+sampled_token_index 69 p=  0.684334
+target_seq shape (1, 1)
+sampled_token_index 52 p=  0.982547
+target_seq shape (1, 1)
+sampled_token_index 2 p=  0.999952
+target_seq shape (1, 1)
+Input sentence: i do care but im a firm believer in doing something for your own reasons not someone else s
+Decoded sentence: i wish i had that luxury im the only that got asked to the prom and i cant go .
+---------------------------------------
+sampled_token_index 12 p=  0.999582
+target_seq shape (1, 1)
+sampled_token_index 2 p=  0.999916
+target_seq shape (1, 1)
+Input sentence: joey never told you we went out did he
+Decoded sentence: what .
+---------------------------------------
+sampled_token_index 67 p=  0.994008
+target_seq shape (1, 1)
+sampled_token_index 2 p=  0.984759
+target_seq shape (1, 1)
+Input sentence: in 9th for a month
+Decoded sentence: why .
+---------------------------------------
+sampled_token_index 32 p=  0.931974
+target_seq shape (1, 1)
+sampled_token_index 3 p=  0.817016
+target_seq shape (1, 1)
+sampled_token_index 459 p=  0.974954
+target_seq shape (1, 1)
+sampled_token_index 870 p=  0.988881
+target_seq shape (1, 1)
+sampled_token_index 2 p=  0.998784
+target_seq shape (1, 1)
+Input sentence: he was like a total babe
+Decoded sentence: but you hate joey .
+---------------------------------------
+sampled_token_index 84 p=  0.943194
+target_seq shape (1, 1)
+sampled_token_index 13 p=  0.99939
+target_seq shape (1, 1)
+sampled_token_index 2 p=  0.999949
+target_seq shape (1, 1)
+Input sentence: now i do back then was a different story
+Decoded sentence: as in .
+---------------------------------------
+sampled_token_index 3 p=  0.99462
+target_seq shape (1, 1)
+sampled_token_index 70 p=  0.93164
+target_seq shape (1, 1)
+sampled_token_index 12 p=  0.911306
+target_seq shape (1, 1)
+sampled_token_index 2 p=  1.0
+target_seq shape (1, 1)
+Input sentence: he said everyone was doing it so i did it
+Decoded sentence: you did what .
+---------------------------------------
+sampled_token_index 4 p=  0.995872
+target_seq shape (1, 1)
+sampled_token_index 237 p=  0.988181
+target_seq shape (1, 1)
+sampled_token_index 6 p=  0.995977
+target_seq shape (1, 1)
+sampled_token_index 108 p=  0.935859
+target_seq shape (1, 1)
+sampled_token_index 3 p=  0.974782
+target_seq shape (1, 1)
+sampled_token_index 117 p=  0.989188
+target_seq shape (1, 1)
+sampled_token_index 53 p=  0.980113
+target_seq shape (1, 1)
+sampled_token_index 25 p=  0.968211
+target_seq shape (1, 1)
+sampled_token_index 253 p=  0.823861
+target_seq shape (1, 1)
+sampled_token_index 240 p=  0.969743
+target_seq shape (1, 1)
+sampled_token_index 38 p=  0.764789
+target_seq shape (1, 1)
+sampled_token_index 48 p=  0.998674
+target_seq shape (1, 1)
+sampled_token_index 2 p=  0.999985
+target_seq shape (1, 1)
+Input sentence: why didnt you tell me
+Decoded sentence: i wanted to let you make up your own mind about him .
+---------------------------------------
+sampled_token_index 16 p=  0.127088
+target_seq shape (1, 1)
+sampled_token_index 21 p=  0.982239
+target_seq shape (1, 1)
+sampled_token_index 534 p=  0.974114
+target_seq shape (1, 1)
+sampled_token_index 194 p=  0.876892
+target_seq shape (1, 1)
+sampled_token_index 6 p=  0.992158
+target_seq shape (1, 1)
+sampled_token_index 938 p=  0.992933
+target_seq shape (1, 1)
+sampled_token_index 25 p=  0.963774
+target_seq shape (1, 1)
+sampled_token_index 1782 p=  0.994495
+target_seq shape (1, 1)
+sampled_token_index 2 p=  0.999997
+target_seq shape (1, 1)
+Input sentence: thats not
+Decoded sentence: im not stupid enough to repeat your mistakes .
+---------------------------------------
+sampled_token_index 190 p=  0.963061
+target_seq shape (1, 1)
+sampled_token_index 40 p=  0.952953
+target_seq shape (1, 1)
+sampled_token_index 34 p=  0.999362
+target_seq shape (1, 1)
+sampled_token_index 36 p=  0.895037
+target_seq shape (1, 1)
+sampled_token_index 48 p=  0.898391
+target_seq shape (1, 1)
+sampled_token_index 34 p=  0.831034
+target_seq shape (1, 1)
+sampled_token_index 188 p=  0.983017
+target_seq shape (1, 1)
+sampled_token_index 14 p=  0.996038
+target_seq shape (1, 1)
+sampled_token_index 939 p=  0.996116
+target_seq shape (1, 1)
+sampled_token_index 224 p=  0.991345
+target_seq shape (1, 1)
+sampled_token_index 13 p=  0.924284
+target_seq shape (1, 1)
+sampled_token_index 5 p=  0.996229
+target_seq shape (1, 1)
+sampled_token_index 940 p=  0.84827
+target_seq shape (1, 1)
+sampled_token_index 42 p=  0.754609
+target_seq shape (1, 1)
+sampled_token_index 4 p=  0.948099
+target_seq shape (1, 1)
+sampled_token_index 69 p=  0.33431
+target_seq shape (1, 1)
+sampled_token_index 941 p=  0.986294
+target_seq shape (1, 1)
+sampled_token_index 9 p=  0.386316
+target_seq shape (1, 1)
+sampled_token_index 150 p=  0.286466
+target_seq shape (1, 1)
+sampled_token_index 2 p=  0.998683
+target_seq shape (1, 1)
+Input sentence: i guess i thought i was protecting you
+Decoded sentence: god youre just like him just keep me locked away in the dark so i cant experience of our .
+---------------------------------------
+sampled_token_index 42 p=  0.994438
+target_seq shape (1, 1)
+sampled_token_index 70 p=  0.923851
+target_seq shape (1, 1)
+sampled_token_index 3 p=  0.999955
+target_seq shape (1, 1)
+sampled_token_index 2 p=  0.999701
+target_seq shape (1, 1)
+Input sentence: you looked beautiful last night you know
+Decoded sentence: so did you .
