@@ -9,7 +9,7 @@ import numpy as np
 import os
 
 batch_size = 64  # Batch size for training.
-epochs = 100  # Number of epochs to train for.
+epochs = 1  # Number of epochs to train for.
 latent_dim = 256  # Latent dimensionality of the encoding space.
 num_samples = 10000  # Number of samples to train on.
 # Path to the data txt file on disk.
@@ -49,8 +49,7 @@ for line in lines[: min(num_samples, len(lines) - 1)]:
     input_text_words = input_text.split(SPACE)
     input_text_words = [word for word in input_text_words if
                         embeddings_index.has_key(word)]  # take only words in the word embedding
-    input_text = SPACE.join(input_text_words[0:-1])
-
+    input_text = SPACE.join(input_text_words[:])
     target_text_words = target_text.split(SPACE)
     target_text_words = [word for word in target_text_words if
                          embeddings_index.has_key(word)]  # take only words in the word embedding
@@ -58,7 +57,7 @@ for line in lines[: min(num_samples, len(lines) - 1)]:
     if target_len > MAX_SEQUENCE_LENGTH:
         target_text = SPACE.join(target_text_words[0:MAX_SEQUENCE_LENGTH])
     else:
-        target_text = SPACE.join(target_text_words[0:-1])
+        target_text = SPACE.join(target_text_words[:])
 
     target_text = START_SIGN + SPACE + target_text + SPACE + STOP_SIGN
     input_texts.append(input_text)
@@ -69,15 +68,15 @@ input_tokenizer.fit_on_texts(input_texts)
 input_sequences = input_tokenizer.texts_to_sequences(
     input_texts)  # nothing in the sequence ls larger than MAX_NB_WORDS-1
 input_word_index = input_tokenizer.word_index
-print('input_word_index: ', input_word_index)
-print('input_sequences: ', input_sequences)
+# print('input_word_index: ', input_word_index)
+# print('input_sequences: ', input_sequences)
 
 target_tokenizer = Tokenizer(num_words=MAX_NB_WORDS + 2, filters=FILTER_STRING)
 target_tokenizer.fit_on_texts(target_texts)
 target_sequences = target_tokenizer.texts_to_sequences(target_texts)
 target_word_index = target_tokenizer.word_index
-print('target_word_index: ', target_word_index)
-print('target_sequences: ', target_sequences)
+# print('target_word_index: ', target_word_index)
+# print('target_sequences: ', target_sequences)
 
 num_encoder_tokens = min(len(input_word_index), MAX_NB_WORDS) + 1
 num_decoder_tokens = min(len(target_word_index), MAX_NB_WORDS + 2) + 1
@@ -164,10 +163,10 @@ decoder_target_data = np.zeros(
 
 for i, target_sequence in enumerate(target_sequences):
     for t, num in enumerate(target_sequence):
-        if t > 0 :
+        if t > 0:
             # decoder_target_data will be ahead by one timestep
             # and will not include the start character.
-            #print ('num',num)
+            # print ('num',num)
             decoder_target_data[i, t - 1, num] = 1.
 
 # Define the model that will turn
@@ -176,7 +175,7 @@ model = Model([encoder_inputs, decoder_inputs], decoder_outputs)
 
 # Run training
 model.compile(optimizer='rmsprop', loss='categorical_crossentropy')
-model.load_weights('s2s_south_park_word_embed.h5')
+model.load_weights('s2s_south_park_200.h5')
 print('start fitting')
 print("encoder_input_data ", encoder_input_data.shape)
 print("decoder_input_data ", decoder_input_data.shape)
@@ -186,7 +185,7 @@ model.fit([encoder_input_data, decoder_input_data], decoder_target_data,
           epochs=epochs,
           validation_split=0.2)
 # Save model
-model.save('s2s_south_park_word_embed.h5')
+model.save('s2s_south_park_201_single_target.h5')
 
 # Next: inference mode (sampling).
 # Here's the drill:
@@ -229,9 +228,11 @@ def decode_sequence(input_seq):
     states_value = encoder_model.predict(input_seq)
 
     # Generate empty target sequence of length 1.
-    target_seq = np.zeros((1, num_decoder_tokens))
+    target_list = list()
+    target_list.append(target_word_index[START_SIGN])
+    target_seq = np.asarray(target_list)
+    target_seq = target_seq.reshape(1, target_seq.shape[0])
     # Populate the first character of target sequence with the start character.
-    target_seq[0, target_word_index[START_SIGN]] = 1.
 
     # Sampling loop for a batch of sequences
     # (to simplify, here we assume a batch of size 1).
@@ -243,14 +244,9 @@ def decode_sequence(input_seq):
         output_tokens, h, c = decoder_model.predict(
             [target_seq] + states_value)
 
-        # Sample a token
-        # Sample a token
         if first_draw:
-
             sampled_token_index = np.random.choice(np.size(output_tokens[0, -1, :]), 1, p=output_tokens[0, -1, :])
             sampled_token_index = sampled_token_index[0];
-
-            #sampled_token_index = np.argmax(output_tokens[0, -1, 1:-1])
             first_draw = False
         else:
             sampled_token_index = np.argmax(output_tokens[0, -1, :])
@@ -264,10 +260,12 @@ def decode_sequence(input_seq):
                     len(decoded_sentence) > min(max_decoder_seq_length, MAX_SEQUENCE_LENGTH + 2)):
             stop_condition = True
 
-        # Update the target sequence (of length 1).
-        target_seq = np.zeros((1, num_decoder_tokens))
-        target_seq[0, sampled_token_index] = 1.
-
+        # Update the target sequence
+        target_list=list()
+        target_list.append(sampled_token_index)
+        target_seq = np.asarray(target_list)
+        target_seq = target_seq.reshape(1, target_seq.shape[0])
+        print("target_seq shape", target_seq.shape)
         # Update states
         states_value = [h, c]
 
