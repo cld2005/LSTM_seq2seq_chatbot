@@ -328,8 +328,9 @@ for i in range(10):
         model.fit([encoder_input_data, decoder_input_data], decoder_target_data,
                   batch_size=batch_size,
                   epochs=epochs,
-                  validation_split=0.2,verbose='2')
+                  validation_split=0.2,verbose='1')
     # Save model
+    print ('saving....:models/s2s_south_park_epoch_%d.h5' % (i * 10 + 10))
     model.save('models/s2s_south_park_epoch_%d.h5' % (i * 10 + 10))
 
     test_with_unseen_data()
