@@ -4,6 +4,7 @@ from keras.models import Model
 from keras.layers import Input, LSTM, Dense, Embedding
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
+import string
 
 import numpy as np
 import os
@@ -14,13 +15,17 @@ latent_dim = 256  # Latent dimensionality of the encoding space.
 num_samples = 10000  # Number of samples to train on.
 # Path to the data txt file on disk.
 data_path = 'conv/codedak_conv.txt'
+test_data_path = 'conv/test.enc'
 BASE_DIR = '../'
 GLOVE_DIR = os.path.join(BASE_DIR, 'glove.6B')
 MAX_SEQUENCE_LENGTH = 20
 MAX_NB_WORDS = 2000
 EMBEDDING_DIM = 100
 NUM_PREDICTION = 50
+NUM_TEST = 100
 TRIANABLE = False
+TRAIN_TIME = False
+RANDOM_FIRST_WORD = False
 START_SIGN = '*'
 SPACE = ' '
 STOP_SIGN = '.'
@@ -68,6 +73,7 @@ input_tokenizer.fit_on_texts(input_texts)
 input_sequences = input_tokenizer.texts_to_sequences(
     input_texts)  # nothing in the sequence ls larger than MAX_NB_WORDS-1
 input_word_index = input_tokenizer.word_index
+
 # print('input_word_index: ', input_word_index)
 # print('input_sequences: ', input_sequences)
 
@@ -84,9 +90,9 @@ max_encoder_seq_length = max([len(txt) for txt in input_sequences])
 max_decoder_seq_length = max([len(txt) for txt in target_sequences])
 
 input_sequences = pad_sequences(input_sequences, padding='post',
-                                maxlen=min(max_encoder_seq_length, MAX_SEQUENCE_LENGTH), truncating='post');
+                                maxlen=min(max_encoder_seq_length, MAX_SEQUENCE_LENGTH), truncating='post')
 target_sequences = pad_sequences(target_sequences, padding='post',
-                                 maxlen=min(max_decoder_seq_length, MAX_SEQUENCE_LENGTH + 2), truncating='post');
+                                 maxlen=min(max_decoder_seq_length, MAX_SEQUENCE_LENGTH + 2), truncating='post')
 
 print('Number of samples:', len(input_texts))
 print('Number of encoder input:', len(input_sequences))
@@ -175,17 +181,11 @@ model = Model([encoder_inputs, decoder_inputs], decoder_outputs)
 
 # Run training
 model.compile(optimizer='rmsprop', loss='categorical_crossentropy')
-model.load_weights('s2s_south_park_200.h5')
+# model.load_weights('s2s_south_park_200.h5')
 print('start fitting')
 print("encoder_input_data ", encoder_input_data.shape)
 print("decoder_input_data ", decoder_input_data.shape)
 print("decoder_target_data ", decoder_target_data.shape)
-model.fit([encoder_input_data, decoder_input_data], decoder_target_data,
-          batch_size=batch_size,
-          epochs=epochs,
-          validation_split=0.2)
-# Save model
-model.save('s2s_south_park_201_single_target.h5')
 
 # Next: inference mode (sampling).
 # Here's the drill:
@@ -245,8 +245,12 @@ def decode_sequence(input_seq):
             [target_seq] + states_value)
 
         if first_draw:
-            sampled_token_index = np.random.choice(np.size(output_tokens[0, -1, :]), 1, p=output_tokens[0, -1, :])
-            sampled_token_index = sampled_token_index[0];
+            if RANDOM_FIRST_WORD:
+                sampled_token_index = np.random.choice(np.size(output_tokens[0, -1, :]), 1, p=output_tokens[0, -1, :])
+                sampled_token_index = sampled_token_index[0];
+            else:
+                sampled_token_index = np.argmax(output_tokens[0, -1, :])
+
             first_draw = False
         else:
             sampled_token_index = np.argmax(output_tokens[0, -1, :])
@@ -261,7 +265,7 @@ def decode_sequence(input_seq):
             stop_condition = True
 
         # Update the target sequence
-        target_list=list()
+        target_list = list()
         target_list.append(sampled_token_index)
         target_seq = np.asarray(target_list)
         target_seq = target_seq.reshape(1, target_seq.shape[0])
@@ -272,6 +276,7 @@ def decode_sequence(input_seq):
     return SPACE.join(decoded_sentence)
 
 
+"""
 for seq_index in range(NUM_PREDICTION):
     # Take one sequence (part of the training test)
     # for trying out decoding.
@@ -280,3 +285,50 @@ for seq_index in range(NUM_PREDICTION):
     decoded_sentence = decode_sequence(input_seq)
     print('Input sentence:', input_texts[seq_index])
     print('Decoded sentence:', decoded_sentence)
+"""
+
+
+def test_sequence(test_lines):
+    test_seq = input_tokenizer.texts_to_sequences(test_lines)
+    test_seq = pad_sequences(test_seq, padding='post',
+                             maxlen=min(max_encoder_seq_length, MAX_SEQUENCE_LENGTH), truncating='post')
+    return test_seq
+
+
+def read_test_text(PATH):
+    lines = open(PATH).read().split('\n')
+    test_texts = []
+
+    for line in lines:
+        test_input_text = string.lower(line.translate(None, string.punctuation))
+        test_input_text = test_input_text.split(SPACE)
+        test_input_text = [word for word in test_input_text if
+                           embeddings_index.has_key(word)]  # take only words in the word embedding
+        test_texts.append(SPACE.join(test_input_text))
+    return test_texts
+
+
+test_texts = read_test_text(test_data_path)
+test_seq = test_sequence(test_texts)
+test_input_data = np.asarray(test_seq)
+
+
+def test_with_unseen_data():
+    print('-------------tests--------------------------')
+    for seq_index in range(NUM_TEST):
+        print('---------------------------------------')
+        input_seq = test_input_data[seq_index: seq_index + 1]
+        decoded_sentence = decode_sequence(input_seq)
+        print('Input sentence:', test_texts[seq_index])
+        print('Decoded sentence:', decoded_sentence)
+
+
+for i in range(10):
+    if TRAIN_TIME:
+        model.fit([encoder_input_data, decoder_input_data], decoder_target_data,
+                  batch_size=batch_size,
+                  epochs=epochs,
+                  validation_split=0.2)
+    # Save model
+    model.save('s2s_south_park_epoch_%d.h5' % (i * 10 + 10))
+    test_with_unseen_data()
