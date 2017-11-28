@@ -330,5 +330,5 @@ for i in range(10):
                   epochs=epochs,
                   validation_split=0.2)
     # Save model
-    model.save('s2s_south_park_epoch_%d.h5' % (i * 10 + 10))
+    model.save('models/s2s_south_park_epoch_%d.h5' % (i * 10 + 10))
     test_with_unseen_data()
