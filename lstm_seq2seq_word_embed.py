@@ -10,7 +10,7 @@ import numpy as np
 import os
 
 batch_size = 64  # Batch size for training.
-epochs = 1  # Number of epochs to train for.
+epochs = 30  # Number of epochs to train for.
 latent_dim = 256  # Latent dimensionality of the encoding space.
 num_samples = 10000  # Number of samples to train on.
 # Path to the data txt file on disk.
@@ -328,7 +328,7 @@ for i in range(10):
         model.fit([encoder_input_data, decoder_input_data], decoder_target_data,
                   batch_size=batch_size,
                   epochs=epochs,
-                  validation_split=0.2)
+                  validation_split=0.2,verbose='2')
     # Save model
     model.save('models/s2s_south_park_epoch_%d.h5' % (i * 10 + 10))
 
