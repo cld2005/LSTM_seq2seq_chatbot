@@ -47,6 +47,7 @@ target_texts = []
 
 lines = open(data_path).read().split('\n')
 for line in lines[: min(num_samples, len(lines) - 1)]:
+    print (line.split('\t'))
     input_text, target_text = line.split('\t')
     # We use "*" as the "start sequence" character
     # for the targets, and "." as "end sequence" character.
