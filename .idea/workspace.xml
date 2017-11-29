@@ -2,8 +2,34 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="974ab8e8-3f68-40db-965d-c232c9267975" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lstm_seq2seq_word_embed.py" afterPath="$PROJECT_DIR$/lstm_seq2seq_word_embed.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/setup.sh" afterPath="$PROJECT_DIR$/setup.sh" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/models/placeholder" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/models/s2s_south_park_epoch_120.h5" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/models/s2s_south_park_epoch_150.h5" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/models/s2s_south_park_epoch_180.h5" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/models/s2s_south_park_epoch_210.h5" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/models/s2s_south_park_epoch_240.h5" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/models/s2s_south_park_epoch_270.h5" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/models/s2s_south_park_epoch_30.h5" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/models/s2s_south_park_epoch_300.h5" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/models/s2s_south_park_epoch_60.h5" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/models/s2s_south_park_epoch_90.h5" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/result_1" afterPath="$PROJECT_DIR$/failed_results/result_1" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/result_codeack" afterPath="$PROJECT_DIR$/failed_results/result_codeack" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/result_codeack_20" afterPath="$PROJECT_DIR$/failed_results/result_codeack_20" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/result_mask_0" afterPath="$PROJECT_DIR$/failed_results/result_mask_0" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/result_mask_0_2000" afterPath="$PROJECT_DIR$/failed_results/result_mask_0_2000" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/result_mask_0_epoch_100_2000" afterPath="$PROJECT_DIR$/failed_results/result_mask_0_epoch_100_2000" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/result_mask_0_epoch_100_2000_continued" afterPath="$PROJECT_DIR$/failed_results/result_mask_0_epoch_100_2000_continued" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/result_no_unknown_words" afterPath="$PROJECT_DIR$/failed_results/result_no_unknown_words" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/result_nov_26_1" afterPath="$PROJECT_DIR$/failed_results/result_nov_26_1" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/result_nov_26_2" afterPath="$PROJECT_DIR$/failed_results/result_nov_26_2" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/result_nov_26_3_trianable" afterPath="$PROJECT_DIR$/failed_results/result_nov_26_3_trianable" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/result_south_park_30_short" afterPath="$PROJECT_DIR$/failed_results/result_south_park_30_short" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/result_trainable_5000" afterPath="$PROJECT_DIR$/failed_results/result_trainable_5000" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/result_trainable_8000" afterPath="$PROJECT_DIR$/failed_results/result_trainable_8000" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/result_trainable_embedding" afterPath="$PROJECT_DIR$/failed_results/result_trainable_embedding" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/reuslt_padding_not_set_to_1" afterPath="$PROJECT_DIR$/failed_results/reuslt_padding_not_set_to_1" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/.idea/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,7 +55,7 @@
       <file leaf-file-name="lstm_seq2seq_word_embed.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lstm_seq2seq_word_embed.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="458">
+            <state relative-caret-position="4725">
               <caret line="333" column="64" lean-forward="false" selection-start-line="333" selection-start-column="64" selection-end-line="333" selection-end-column="64" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
@@ -53,16 +79,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="60">
               <caret line="4" column="9" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="placeholder" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/placeholder">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -155,10 +171,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-1057" />
-    <option name="width" value="1280" />
-    <option name="height" value="1057" />
+    <option name="y" value="23" />
+    <option name="width" value="2560" />
+    <option name="height" value="1273" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -176,6 +191,7 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -190,7 +206,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -202,12 +217,13 @@
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/failed_results" />
+      <recent name="$PROJECT_DIR$/conv" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/conv" />
       <recent name="$PROJECT_DIR$" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/conv" />
     </key>
   </component>
   <component name="RunManager" selected="Python.lstm_seq2seq_word_embed">
@@ -540,19 +556,19 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-1057" width="1280" height="1057" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="23" width="2560" height="1273" extended-state="6" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25138998" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Debug Logs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3284974" sideWeight="0.5371567" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3276884" sideWeight="0.53852266" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Execute Anonymous" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3284974" sideWeight="0.4628433" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3276884" sideWeight="0.46147737" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Salesforce" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -880,7 +896,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/result_nov_26_3_trianable">
+    <entry file="file://$PROJECT_DIR$/failed_results/result_nov_26_3_trianable">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -892,7 +908,6 @@
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="0">
             <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-            <folding />
           </first_editor>
           <second_editor />
         </state>
@@ -940,7 +955,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lstm_seq2seq_word_embed.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="458">
+        <state relative-caret-position="4725">
           <caret line="333" column="64" lean-forward="false" selection-start-line="333" selection-start-column="64" selection-end-line="333" selection-end-column="64" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
