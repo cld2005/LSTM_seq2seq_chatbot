@@ -10,7 +10,7 @@ import numpy as np
 import os
 
 batch_size = 64  # Batch size for training.
-epochs = 1  # Number of epochs to train for.
+epochs = 30  # Number of epochs to train for.
 latent_dim = 256  # Latent dimensionality of the encoding space.
 num_samples = 100000  # Number of samples to train on.
 # Path to the data txt file on disk.
@@ -47,7 +47,7 @@ target_texts = []
 
 lines = open(data_path).read().split('\n')
 for line in lines[: min(num_samples, len(lines) - 1)]:
-    print (line.split('\t'))
+    #print (line.split('\t'))
     input_text, target_text = line.split('\t')
     # We use "*" as the "start sequence" character
     # for the targets, and "." as "end sequence" character.
@@ -329,7 +329,7 @@ for i in range(10):
         model.fit([encoder_input_data, decoder_input_data], decoder_target_data,
                   batch_size=batch_size,
                   epochs=epochs,
-                  validation_split=0.2,verbose='1')
+                  validation_split=0.2)
     # Save model
     print ('saving....:models/cornell_codedak_epoch_%d.h5' % (i * epochs + epochs))
     model.save('models/cornell_codedak_epoch_%d.h5' % (i * epochs + epochs))
