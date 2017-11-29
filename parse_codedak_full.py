@@ -18,8 +18,8 @@ decode_set = {}
 F = open(parsed_file,"w")
 
 for line in lines[: min(num_samples, len(lines) - 1) :]:
-    input_text = string.lower(line[0].translate(None, [string.punctuation,'\t']))
-    target_text = string.lower(line[1].translate(None, [string.punctuation,'\t']))
+    input_text = string.lower(line[0].translate(None, string.punctuation+'\t'))
+    target_text = string.lower(line[1].translate(None, string.punctuation+'\t'))
 
     for txt in input_text.split(' '):
         if not encode_set.has_key(txt):
@@ -31,7 +31,7 @@ for line in lines[: min(num_samples, len(lines) - 1) :]:
             decode_set[txt] = 0
         decode_set[txt] = decode_set[txt] + 1
     #print input_text+'\t'+target_text+'\n'
-    F.write(input_text+'\t'+target_text+'\n');
+    F.write(input_text+'\t'+target_text+'\n')
 F.close()
 
 print ('encode_set size ', len(encode_set))
