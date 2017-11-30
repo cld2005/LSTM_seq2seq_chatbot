@@ -169,13 +169,14 @@ print('decoder_outputs: ', decoder_outputs)
 encoder_input_data = np.asarray(input_sequences)
 decoder_input_data = np.asarray(target_sequences)
 
-decoder_target_data = np.zeros(
-    (len(input_texts), min(max_decoder_seq_length, MAX_SEQUENCE_LENGTH + 2), num_decoder_tokens),
-    dtype='float32')
+if TRAIN_TIME:
+    decoder_target_data = np.zeros(
+        (len(input_texts), min(max_decoder_seq_length, MAX_SEQUENCE_LENGTH + 2), num_decoder_tokens),
+        dtype='float32')
 
 for i, target_sequence in enumerate(target_sequences):
     for t, num in enumerate(target_sequence):
-        if t > 0:
+        if t > 0 and TRAIN_TIME:
             # decoder_target_data will be ahead by one timestep
             # and will not include the start character.
             # print ('num',num)
