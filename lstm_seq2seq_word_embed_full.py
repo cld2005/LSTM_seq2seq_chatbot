@@ -270,7 +270,7 @@ def decode_sequence(input_seq):
         target_list.append(sampled_token_index)
         target_seq = np.asarray(target_list)
         target_seq = target_seq.reshape(1, target_seq.shape[0])
-        print("target_seq shape", target_seq.shape)
+        #print("target_seq shape", target_seq.shape)
         # Update states
         states_value = [h, c]
 
