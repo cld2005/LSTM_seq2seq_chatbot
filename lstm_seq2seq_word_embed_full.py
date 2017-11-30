@@ -24,8 +24,8 @@ EMBEDDING_DIM = 100
 NUM_PREDICTION = 50
 NUM_TEST = 100
 TRIANABLE = False
-TRAIN_TIME = True
-RANDOM_FIRST_WORD = False
+TRAIN_TIME = False
+RANDOM_FIRST_WORD = True
 START_SIGN = '*'
 SPACE = ' '
 STOP_SIGN = '.'
@@ -182,7 +182,7 @@ model = Model([encoder_inputs, decoder_inputs], decoder_outputs)
 
 # Run training
 model.compile(optimizer='rmsprop', loss='categorical_crossentropy')
-# model.load_weights('s2s_south_park_200.h5')
+model.load_weights('models/cornell_codedak_epoch_60.h5')
 print('start fitting')
 print("encoder_input_data ", encoder_input_data.shape)
 print("decoder_input_data ", decoder_input_data.shape)
@@ -278,6 +278,7 @@ def decode_sequence(input_seq):
 
 
 """
+# test with training data
 for seq_index in range(NUM_PREDICTION):
     # Take one sequence (part of the training test)
     # for trying out decoding.
@@ -301,6 +302,7 @@ def clean_input_sentence(line, embeddings_index):
     test_input_text = test_input_text.split(SPACE)
     test_input_text = [word for word in test_input_text if
                        embeddings_index.has_key(word)]  # take only words in the word embedding
+    test_input_text = SPACE.join(test_input_text)
     return test_input_text
 
 
@@ -310,13 +312,24 @@ def read_test_text(PATH):
 
     for line in lines:
         test_input_text = clean_input_sentence(line, embeddings_index)
-        test_texts.append(SPACE.join(test_input_text))
+        test_texts.append(test_input_text)
     return test_texts
 
 
 test_texts = read_test_text(test_data_path)
 test_seq = test_sequence(test_texts)
 test_input_data = np.asarray(test_seq)
+
+
+def test_with_user_input(line):
+    line = clean_input_sentence(line,embeddings_index )
+    print ('line: ' ,line)
+    user_text = []
+    user_text.append(line)
+    user_seq = test_sequence(user_text)
+    user_input_data = np.asarray(user_seq)
+    decoded_sentence = decode_sequence(user_input_data[0])
+    print(decoded_sentence)
 
 
 def test_with_unseen_data():
@@ -335,8 +348,10 @@ for i in range(10):
                   batch_size=batch_size,
                   epochs=epochs,
                   validation_split=0.2)
-    # Save model
-    print('saving....:models/cornell_codedak_epoch_%d.h5' % (i * epochs + epochs))
-    model.save('models/cornell_codedak_epoch_%d.h5' % (i * epochs + epochs))
-
-    test_with_unseen_data()
+        # Save model
+        print('saving....:models/cornell_codedak_epoch_%d.h5' % (i * epochs + epochs))
+        model.save('models/cornell_codedak_epoch_%d.h5' % (i * epochs + epochs))
+        test_with_unseen_data()
+    else :
+        user_input ='hi how are you'
+        test_with_user_input(user_input)
