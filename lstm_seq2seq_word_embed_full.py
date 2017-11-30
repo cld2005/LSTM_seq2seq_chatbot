@@ -192,7 +192,8 @@ model.load_weights('models/cornell_codedak_epoch_60.h5')
 print('start fitting')
 print("encoder_input_data ", encoder_input_data.shape)
 print("decoder_input_data ", decoder_input_data.shape)
-print("decoder_target_data ", decoder_target_data.shape)
+if TRAIN_TIME:
+    print("decoder_target_data ", decoder_target_data.shape)
 
 # Next: inference mode (sampling).
 # Here's the drill:
