@@ -47,7 +47,7 @@ target_texts = []
 
 lines = open(data_path).read().split('\n')
 for line in lines[: min(num_samples, len(lines) - 1)]:
-    #print (line.split('\t'))
+    # print (line.split('\t'))
     input_text, target_text = line.split('\t')
     # We use "*" as the "start sequence" character
     # for the targets, and "." as "end sequence" character.
@@ -270,7 +270,7 @@ def decode_sequence(input_seq):
         target_list.append(sampled_token_index)
         target_seq = np.asarray(target_list)
         target_seq = target_seq.reshape(1, target_seq.shape[0])
-        #print("target_seq shape", target_seq.shape)
+        # print("target_seq shape", target_seq.shape)
         # Update states
         states_value = [h, c]
 
@@ -296,15 +296,20 @@ def test_sequence(test_lines):
     return test_seq
 
 
+def clean_input_sentence(line, embeddings_index):
+    test_input_text = string.lower(line.translate(None, string.punctuation))
+    test_input_text = test_input_text.split(SPACE)
+    test_input_text = [word for word in test_input_text if
+                       embeddings_index.has_key(word)]  # take only words in the word embedding
+    return test_input_text
+
+
 def read_test_text(PATH):
     lines = open(PATH).read().split('\n')
     test_texts = []
 
     for line in lines:
-        test_input_text = string.lower(line.translate(None, string.punctuation))
-        test_input_text = test_input_text.split(SPACE)
-        test_input_text = [word for word in test_input_text if
-                           embeddings_index.has_key(word)]  # take only words in the word embedding
+        test_input_text = clean_input_sentence(line, embeddings_index)
         test_texts.append(SPACE.join(test_input_text))
     return test_texts
 
@@ -331,7 +336,7 @@ for i in range(10):
                   epochs=epochs,
                   validation_split=0.2)
     # Save model
-    print ('saving....:models/cornell_codedak_epoch_%d.h5' % (i * epochs + epochs))
+    print('saving....:models/cornell_codedak_epoch_%d.h5' % (i * epochs + epochs))
     model.save('models/cornell_codedak_epoch_%d.h5' % (i * epochs + epochs))
 
     test_with_unseen_data()
