@@ -5,9 +5,14 @@ from keras.layers import Input, LSTM, Dense, Embedding
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
 import string
-
 import numpy as np
 import os
+
+
+from flask import Flask, render_template, jsonify,request
+from time import sleep
+
+app = Flask(__name__)
 
 batch_size = 64  # Batch size for training.
 epochs = 30  # Number of epochs to train for.
@@ -255,7 +260,7 @@ def decode_sequence(input_seq):
             first_draw = False
         else:
             sampled_token_index = np.argmax(output_tokens[0, -1, :])
-        print("sampled_token_index", sampled_token_index, "p= ", output_tokens[0, -1, sampled_token_index])
+        #print("sampled_token_index", sampled_token_index, "p= ", output_tokens[0, -1, sampled_token_index])
         sampled_word = reverse_target_char_index[sampled_token_index]
         decoded_sentence.append(sampled_word)
 
@@ -330,6 +335,7 @@ def test_with_user_input(line):
     user_input_data = np.asarray(user_seq)
     decoded_sentence = decode_sequence(user_input_data[0])
     print(decoded_sentence)
+    return decoded_sentence
 
 
 def test_with_unseen_data():
@@ -342,16 +348,34 @@ def test_with_unseen_data():
         print('Decoded sentence:', decoded_sentence)
 
 
-for i in range(10):
-    if TRAIN_TIME:
-        model.fit([encoder_input_data, decoder_input_data], decoder_target_data,
-                  batch_size=batch_size,
-                  epochs=epochs,
-                  validation_split=0.2)
-        # Save model
-        print('saving....:models/cornell_codedak_epoch_%d.h5' % (i * epochs + epochs))
-        model.save('models/cornell_codedak_epoch_%d.h5' % (i * epochs + epochs))
-        test_with_unseen_data()
-    else :
-        user_input ='hi how are you'
-        test_with_user_input(user_input)
+@app.route('/')
+def index_page():
+    return render_template('index.html')
+
+@app.route('/respond', methods=['POST'])
+def respond():
+    user_input = str(request.form['message'])
+    print ('user_input:', user_input)
+    respond_text = test_with_user_input(user_input)
+    return jsonify({ 'response': respond_text })
+
+if TRAIN_TIME:
+    for i in range(10):
+
+            model.fit([encoder_input_data, decoder_input_data], decoder_target_data,
+                      batch_size=batch_size,
+                      epochs=epochs,
+                      validation_split=0.2)
+            # Save model
+            print('saving....:models/cornell_codedak_epoch_%d.h5' % (i * epochs + epochs))
+            model.save('models/cornell_codedak_epoch_%d.h5' % (i * epochs + epochs))
+            test_with_unseen_data()
+else :
+    """
+    user_input =text = raw_input("line: ")
+    test_with_user_input(user_input)
+
+    """
+
+    app.run(port=8000)
+
