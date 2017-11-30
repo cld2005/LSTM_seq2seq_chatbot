@@ -1,0 +1,7 @@
+('encode_lines len ', 108136)
+('decode_lines len ', 108136)
+('decode_lines lines ', 108136)
+('encode_set size ', 38068)
+('decode_set size ', 36659)
+('common_encode_set size f>30 ', 2142)
+('common_decode_set size f>30', 2038)

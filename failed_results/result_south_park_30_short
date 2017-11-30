@@ -1,0 +1,481 @@
+
+f samples: 9999
+Number of unique input tokens: 59
+Number of unique output tokens: 61
+Max sequence length for inputs: 64
+Max sequence length for outputs: 66
+Train on 7999 samples, validate on 2000 samples
+Epoch 1/30
+2017-11-13 20:35:36.717859: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2017-11-13 20:35:36.717893: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-11-13 20:35:36.717906: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2017-11-13 20:35:36.717916: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-11-13 20:35:36.717922: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2017-11-13 20:35:36.820256: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:893] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2017-11-13 20:35:36.820612: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 0 with properties: 
+name: Tesla M60
+major: 5 minor: 2 memoryClockRate (GHz) 1.1775
+pciBusID 0000:00:1e.0
+Total memory: 7.43GiB
+Free memory: 7.36GiB
+2017-11-13 20:35:36.820636: I tensorflow/core/common_runtime/gpu/gpu_device.cc:976] DMA: 0 
+2017-11-13 20:35:36.820647: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 0:   Y 
+2017-11-13 20:35:36.820657: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla M60, pci bus id: 0000:00:1e.0)
+7999/7999 [==============================] - 21s - loss: 1.4322 - val_loss: 1.3032
+Epoch 2/30
+7999/7999 [==============================] - 20s - loss: 1.2302 - val_loss: 1.1426
+Epoch 3/30
+7999/7999 [==============================] - 20s - loss: 1.1179 - val_loss: 1.0585
+Epoch 4/30
+7999/7999 [==============================] - 20s - loss: 1.0538 - val_loss: 1.0088
+Epoch 5/30
+7999/7999 [==============================] - 20s - loss: 1.0046 - val_loss: 0.9673
+Epoch 6/30
+7999/7999 [==============================] - 20s - loss: 0.9641 - val_loss: 0.9312
+Epoch 7/30
+7999/7999 [==============================] - 20s - loss: 0.9303 - val_loss: 0.9099
+Epoch 8/30
+7999/7999 [==============================] - 20s - loss: 0.9011 - val_loss: 0.8848
+Epoch 9/30
+7999/7999 [==============================] - 20s - loss: 0.8762 - val_loss: 0.8689
+Epoch 10/30
+7999/7999 [==============================] - 20s - loss: 0.8534 - val_loss: 0.8518
+Epoch 11/30
+7999/7999 [==============================] - 20s - loss: 0.8326 - val_loss: 0.8385
+Epoch 12/30
+7999/7999 [==============================] - 20s - loss: 0.8148 - val_loss: 0.8294
+Epoch 13/30
+7999/7999 [==============================] - 20s - loss: 0.7973 - val_loss: 0.8201
+Epoch 14/30
+7999/7999 [==============================] - 20s - loss: 0.7823 - val_loss: 0.8068
+Epoch 15/30
+7999/7999 [==============================] - 20s - loss: 0.7662 - val_loss: 0.7986
+Epoch 16/30
+7999/7999 [==============================] - 20s - loss: 0.7526 - val_loss: 0.7963
+Epoch 17/30
+7999/7999 [==============================] - 20s - loss: 0.7399 - val_loss: 0.7850
+Epoch 18/30
+7999/7999 [==============================] - 19s - loss: 0.7275 - val_loss: 0.7859
+Epoch 19/30
+7999/7999 [==============================] - 20s - loss: 0.7160 - val_loss: 0.7788
+Epoch 20/30
+7999/7999 [==============================] - 19s - loss: 0.7054 - val_loss: 0.7748
+Epoch 21/30
+7999/7999 [==============================] - 20s - loss: 0.6947 - val_loss: 0.7744
+Epoch 22/30
+7999/7999 [==============================] - 20s - loss: 0.6848 - val_loss: 0.7737
+Epoch 23/30
+7999/7999 [==============================] - 20s - loss: 0.6750 - val_loss: 0.7720
+Epoch 24/30
+7999/7999 [==============================] - 20s - loss: 0.6656 - val_loss: 0.7719
+Epoch 25/30
+7999/7999 [==============================] - 20s - loss: 0.6564 - val_loss: 0.7774
+Epoch 26/30
+7999/7999 [==============================] - 20s - loss: 0.6479 - val_loss: 0.7740
+Epoch 27/30
+7999/7999 [==============================] - 20s - loss: 0.6396 - val_loss: 0.7719
+Epoch 28/30
+7999/7999 [==============================] - 20s - loss: 0.6311 - val_loss: 0.7785
+Epoch 29/30
+7999/7999 [==============================] - 19s - loss: 0.6232 - val_loss: 0.7783
+Epoch 30/30
+7999/7999 [==============================] - 20s - loss: 0.6151 - val_loss: 0.7794
+-
+Input sentence: you guys, you guys! chef is going away
+Decoded sentence: yeah
+
+-
+Input sentence: going away? for how long?
+Decoded sentence: so the dear is on the one that you should be a secord of has to
+
+-
+Input sentence: forever
+Decoded sentence: dude, we don't have any change
+
+-
+Input sentence: i'm sorry boys
+Decoded sentence: oh my god
+
+-
+Input sentence: chef said he's been bored, so he joining a group called the
+Decoded sentence: but i think i'm sorry to the super are the person would
+
+-
+Input sentence: wow!
+Decoded sentence: well i don't know
+
+-
+Input sentence: chef?? what kind of questions do you think adventuring around
+Decoded sentence: well i don't know
+
+-
+Input sentence: what's the meaning of life? why are we here?
+Decoded sentence: kyle, i don't have a real and all the terrorists and we can
+
+-
+Input sentence: i hope you're making the right choice
+Decoded sentence: well i don't know
+
+-
+Input sentence: i'm gonna miss him
+Decoded sentence: well i don't know
+
+-
+Input sentence: dude, how are we gonna go on? chef was our fuh
+Decoded sentence: oh my god
+
+-
+Input sentence: and we will all miss you, chef,  but we know you must do what
+Decoded sentence: maybe we should get out of here! 
+
+-
+Input sentence: bye-bye!
+Decoded sentence: well i don't know
+
+-
+Input sentence: good-bye!
+Decoded sentence: all right, we're not gonna be so the really good of the child
+
+-
+Input sentence: so long!
+Decoded sentence: all right, we're not gonna be so the really good of the child
+
+-
+Input sentence: so long, chef!
+Decoded sentence: the persians is the matters what you think i'm say in the
+
+-
+Input sentence: good-bye, chef!
+Decoded sentence: all right, we're not gonna be so the really good of the child
+
+-
+Input sentence: good-bye, chef! have a great time with the super adventure club!
+Decoded sentence: goddamnit, you guys are we gonna pear in the crap in the world
+
+-
+Input sentence: good-bye! 
+Decoded sentence: the persians is the matters what you think i'm say in the
+
+-
+Input sentence: draw two card, fatass
+Decoded sentence: i don't know
+
+-
+Input sentence: reverse to you, jew
+Decoded sentence: look, i know i don't have any change
+
+-
+Input sentence: i'll get it
+Decoded sentence: the persians is the matters what you think i'm say in the
+
+-
+Input sentence: hello there, children!
+Decoded sentence: yeah
+
+-
+Input sentence: he's back!
+Decoded sentence: hey can you see it?
+
+-
+Input sentence: yeah!
+Decoded sentence: i don't know
+
+-
+Input sentence: all right! 
+Decoded sentence: the persians is the matters what you think i'm say in the
+
+-
+Input sentence: chef! i can't believe you're back!
+Decoded sentence: dude, we don't have any change
+
+-
+Input sentence: well, it's true
+Decoded sentence: so the dear is on the one that you should be a secord of has to
+
+-
+Input sentence: but are you back for good?
+Decoded sentence: well i don't know
+
+-
+Input sentence: that's right
+Decoded sentence: hey can you see it?
+
+-
+Input sentence: hey everybody! chef's back!
+Decoded sentence: well i don't know
+
+-
+Input sentence: what? all right! yeah! 
+Decoded sentence: hey can you see it?
+
+-
+Input sentence: oh, finally! 
+Decoded sentence: hey can you see it?
+
+-
+Input sentence: wow! it seems like you had a great time with the super
+Decoded sentence: oh my god
+
+-
+Input sentence: yeah!
+Decoded sentence: dude, we don't have any change
+
+-
+Input sentence: but now that you're back here, does that mean that you're not
+Decoded sentence: jesus christ
+
+-
+Input sentence: nnono!
+Decoded sentence: goddamnit, you guys are we gonna pear in the crap in the countr
+
+-
+Input sentence: ohhh, so have you decided you can still belong to the super
+Decoded sentence: yeah
+
+-
+Input sentence: that's right
+Decoded sentence: dude, we don't have any change
+
+-
+Input sentence: well, it seems like the super adventure club was just what you
+Decoded sentence: we have to get out of here! 
+
+-
+Input sentence: that's right
+Decoded sentence: hey can you see it?
+
+-
+Input sentence: well chef, you're welcome to stay with me until you buy another
+Decoded sentence: just let it on the bigh and we know that i think the tould to
+
+-
+Input sentence: thank you
+Decoded sentence: (what the hell is this? 
+
+-
+Input sentence: well, come on everybody
+Decoded sentence: goddamnit, you guys are we gonna pear in the crap in the countr
+
+-
+Input sentence: that's right! thank you
+Decoded sentence: yeah
+
+-
+Input sentence: later
+Decoded sentence: the persians is the matters what you think i'm say in the
+
+-
+Input sentence: well, i- guess we'll see you in school tomorrow, chef
+Decoded sentence: i don't know
+
+-
+Input sentence: you bet! good-bye
+Decoded sentence: i don't know
+
+-
+Input sentence: right
+Decoded sentence: yeah
+
+-
+Input sentence: uh, guys? did chef seem a little, uh, trippy to you?
+Decoded sentence: yeah
+
+-
+Input sentence: well, look
+Decoded sentence: yeah
+
+-
+Input sentence: yeah
+Decoded sentence: all right, we're not gonna be so the really good of the child
+
+-
+Input sentence: yeah, but whatever, i'm just glad he's back for good
+Decoded sentence: so the dear is on the one that you should be a secord of the
+
+-
+Input sentence: (yeah, me too
+Decoded sentence: (what the hell is this? 
+
+-
+Input sentence: it's really weird what he said
+Decoded sentence: i don't know
+
+-
+Input sentence: oh boy oh boy, i can't wait to have chef's lunch food again
+Decoded sentence: hey can you see it?
+
+-
+Input sentence: yeah
+Decoded sentence: yeah
+
+-
+Input sentence: you guys, you guys
+Decoded sentence: oh my god
+
+-
+Input sentence: what?
+Decoded sentence: all right, we're not gonna be so the really good of the child
+
+-
+Input sentence: something's wrong with chef
+Decoded sentence: 
+
+-
+Input sentence: like what?
+Decoded sentence: stan and he's gonna be something and help it out of here
+
+-
+Input sentence: i think
+Decoded sentence: no! no, i don't have any change! 
+
+-
+Input sentence: what??
+Decoded sentence: all right, we're not gonna be so the really good of the child
+
+-
+Input sentence: i gotta- i gotta go
+Decoded sentence: really? what are you doing?!
+
+-
+Input sentence: weirdo
+Decoded sentence: maybe we should get out of here! 
+
+-
+Input sentence: hello there, children!
+Decoded sentence: well i don't know
+
+-
+Input sentence: hey chef
+Decoded sentence: hey can you see it?
+
+-
+Input sentence: how's it goin'?
+Decoded sentence: i don't know
+
+-
+Input sentence: good
+Decoded sentence: kyle, i don't have a real and all the terrorists and we can
+
+-
+Input sentence: well, how about i meet you boys after work and we make love?
+Decoded sentence: so the dear is on the one that you should be a secord of has to
+
+-
+Input sentence: excuse me?
+Decoded sentence: hey can you see it?
+
+-
+Input sentence: come on, children! you're my sexual fantasy
+Decoded sentence: yeah
+
+-
+Input sentence: 
+Decoded sentence: no! no, i don't have any change! 
+
+-
+Input sentence: i want to stick my balls inside your rectum, kyle
+Decoded sentence: no! no, i don't have any change! 
+
+-
+Input sentence: dude, what are you saying??
+Decoded sentence: well i don't know
+
+-
+Input sentence: i'm gonna make love to your asshole, children
+Decoded sentence: no! no, i don't have any change! 
+
+-
+Input sentence: 
+Decoded sentence: yeah
+
+-
+Input sentence: hi kids, i'm detective jarvis
+Decoded sentence: the persians is the matters what you think i'm say in the
+
+-
+Input sentence: this doesn't make any sense!
+Decoded sentence: uh well, i don't have any change
+
+-
+Input sentence: we have some information that all this time chef has been and
+Decoded sentence: well, i don't have a cartman and kidd of the strict of the
+
+-
+Input sentence: no, he's not
+Decoded sentence: well i don't know
+
+-
+Input sentence: uh huh
+Decoded sentence: oh my god
+
+-
+Input sentence: no, he's not
+Decoded sentence: maybe we should get out of here! 
+
+-
+Input sentence: yeah, yeah he is so
+Decoded sentence: hey can you see it?
+
+-
+Input sentence: what's a pedophile?
+Decoded sentence: well i don't know
+
+-
+Input sentence: now, we need some testimony in order to arrest chef,  so i'm
+Decoded sentence: oh my god
+
+-
+Input sentence: no!
+Decoded sentence: yeah
+
+-
+Input sentence: okay, did he touch you here? 
+Decoded sentence: oh my god
+
+-
+Input sentence: no!
+Decoded sentence: no! no, i don't have any change! 
+
+-
+Input sentence: did he ever do this? how about this? 
+Decoded sentence: no way are not telling to tell the neww this in the countrol
+
+-
+Input sentence: my uncle bud did that to me once! 
+Decoded sentence: come on, we don't have any man
+
+-
+Input sentence: did chef ever try one of these on for size? 
+Decoded sentence: a walk to be over there
+
+-
+Input sentence: goddammit, chef isn't like that! something funny is going on
+Decoded sentence: come on, we don't have any man
+
+-
+Input sentence: young man, will you please pay attention! this is very
+Decoded sentence: no! no, i don't have any change! 
+
+-
+Input sentence: hello there, children!
+Decoded sentence: yeah
+
+-
+Input sentence: chef, the police are asking questions about you!
+Decoded sentence: yeah
+
+-
+Input sentence: oh really? well, let's all go home and make love
+Decoded sentence: well i don't know
+
+-
+Input sentence: no, chef, we don't wanna make love to you!
+Decoded sentence: look, i know i don't have any change
+
+-
+Input sentence: kenny, how would you like to sodomize my black ass
+Decoded sentence: yeah
+
+-
+Input sentence: chef, chef! you need to get out of here before you get
+Decoded sentence: hey can you see it?
