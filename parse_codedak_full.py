@@ -1,7 +1,7 @@
 import string
 data_path_encode = 'conv/train.enc'
 data_path_decode = 'conv/train.dec'
-parsed_file = 'conv/codedak_conv_full.txt';
+parsed_file = 'conv/codedak_conv_full_copy.txt';
 num_samples = 100000
 encode_lines = open(data_path_encode).read().split('\n')
 decode_lines = open(data_path_decode).read().split('\n')
@@ -17,10 +17,17 @@ encode_set = {}
 decode_set = {}
 F = open(parsed_file,"w")
 
+i=0
+
+length = 0
+
 for line in lines[: min(num_samples, len(lines) - 1) :]:
     input_text = string.lower(line[0].translate(None, string.punctuation+'\t'))
     target_text = string.lower(line[1].translate(None, string.punctuation+'\t'))
 
+    length +=len(input_text.split(' '))
+    length += len(target_text.split(' '))
+    i+=2
     for txt in input_text.split(' '):
         if not encode_set.has_key(txt):
             encode_set[txt]=0
@@ -36,6 +43,8 @@ F.close()
 
 print ('encode_set size ', len(encode_set))
 print ('decode_set size ', len(decode_set))
+
+print ('average size:',length*1.0/i)
 
 
 common_encode_set = dict ((k,v) for (k,v) in encode_set.items() if v >30)
