@@ -1,7 +1,7 @@
 import string
 data_path_encode = 'conv/train.enc'
 data_path_decode = 'conv/train.dec'
-parsed_file = 'conv/codedak_conv_full_copy.txt';
+parsed_file = 'conv/codedak_conv_full.txt';
 num_samples = 100000
 encode_lines = open(data_path_encode).read().split('\n')
 decode_lines = open(data_path_decode).read().split('\n')
