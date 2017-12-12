@@ -284,7 +284,7 @@ def decode_sequence(input_seq):
     return SPACE.join(decoded_sentence)
 
 
-"""
+
 # test with training data
 for seq_index in range(NUM_PREDICTION):
     # Take one sequence (part of the training test)
@@ -294,7 +294,7 @@ for seq_index in range(NUM_PREDICTION):
     decoded_sentence = decode_sequence(input_seq)
     print('Input sentence:', input_texts[seq_index])
     print('Decoded sentence:', decoded_sentence)
-"""
+
 
 
 def test_sequence(test_lines):
