@@ -1,0 +1,168 @@
+loading Glove.6B 100 embedding.
+Found 400000 word vectors.
+Number of samples: 100000
+Number of encoder input: 100000
+Number of decoder input: 100000
+Number of unique input tokens: 2201
+Number of unique output tokens: 2203
+Max sequence length for inputs: 285
+Max sequence length for outputs: 22
+Preparing embedding matrix.
+prepare input embedding matrix
+hit_count : 2199 percentage:  0.999091322126
+prepare decoder embedding matrix
+Define an input sequence and process it
+decoder_outputs:  Tensor("dense_1/div:0", shape=(?, ?, 2203), dtype=float32)
+start fitting
+encoder_input_data  (100000, 20)
+decoder_input_data  (100000, 22)
+---------------------------------------
+Input sentence: not the hacking and gagging and spitting part please
+Decoded sentence: be .
+---------------------------------------
+Input sentence: no no its my fault we didnt have a proper introduction
+Decoded sentence: well we had a good time .
+---------------------------------------
+Input sentence: the thing is cameron im at the mercy of a particularly hideous breed of loser my sister i cant date until she does
+Decoded sentence: now guess so i can do it .
+---------------------------------------
+Input sentence: why
+Decoded sentence: i dont know what to say .
+---------------------------------------
+Input sentence: gosh if only we could find kat a boyfriend
+Decoded sentence: yeah sure i can have a .
+---------------------------------------
+Input sentence: cesc ma tete this is my head
+Decoded sentence: but i do .
+---------------------------------------
+Input sentence: how is our little find the wench a date plan progressing
+Decoded sentence: the will be the in the morning .
+---------------------------------------
+Input sentence: there
+Decoded sentence: i dont know .
+---------------------------------------
+Input sentence: you got something on your mind
+Decoded sentence: yeah .
+---------------------------------------
+Input sentence: you have my word as a gentleman
+Decoded sentence: now is what can you do .
+---------------------------------------
+Input sentence: how do you get your hair to look like that
+Decoded sentence: well thats what i mean .
+---------------------------------------
+Input sentence: sure have
+Decoded sentence: thing that is a good one .
+---------------------------------------
+Input sentence: so thats the kind of guy she likes pretty ones
+Decoded sentence: thats all that is going down .
+---------------------------------------
+Input sentence: hi
+Decoded sentence: still in .
+---------------------------------------
+Input sentence: have fun tonight
+Decoded sentence: .
+---------------------------------------
+Input sentence: i looked for you back at the party but you always seemed to be occupied
+Decoded sentence: what .
+---------------------------------------
+Input sentence: well no
+Decoded sentence: well no not really i .
+---------------------------------------
+Input sentence: me this endless blonde babble im like boring myself
+Decoded sentence: hell of a way .
+---------------------------------------
+Input sentence: the real you
+Decoded sentence: you mean the .
+---------------------------------------
+Input sentence: im kidding you know how sometimes you just become this persona and you dont know how to quit
+Decoded sentence: no .
+---------------------------------------
+Input sentence: wow
+Decoded sentence: yeah .
+---------------------------------------
+Input sentence: she okay
+Decoded sentence: correct it you have a little of you .
+---------------------------------------
+Input sentence: they do to
+Decoded sentence: to me .
+---------------------------------------
+Input sentence: did you change your hair
+Decoded sentence: no .
+---------------------------------------
+Input sentence: where did he go he was just here
+Decoded sentence: she said the hospital .
+---------------------------------------
+Input sentence: great
+Decoded sentence: yeah .
+---------------------------------------
+Input sentence: he practically proposed when he found out we had the same dermatologist i mean dr is great an all but hes not exactly relevant party conversation
+Decoded sentence: good hes .
+---------------------------------------
+Input sentence: bianca i dont think the highlights of dating joey dorsey are going to include and
+Decoded sentence: but i didnt have time .
+---------------------------------------
+Input sentence: i have to be home in twenty minutes
+Decoded sentence: this is what you can do it .
+---------------------------------------
+Input sentence: so yeah ive got the sears catalog thing going and the tube sock gig thats gonna be huge and then im up for an ad for queen harry next week
+Decoded sentence: son were on .
+---------------------------------------
+Input sentence: neat
+Decoded sentence: well i guess it was my own business .
+---------------------------------------
+Input sentence: listen i want to talk to you about the prom
+Decoded sentence: what .
+---------------------------------------
+Input sentence: i have the potential to smack the crap out of you if you dont get out of my way
+Decoded sentence: who are you .
+---------------------------------------
+Input sentence: oh my god does this mean youre becoming normal
+Decoded sentence: about what .
+---------------------------------------
+Input sentence: oh i thought you might have a date i dont know why im bothering to ask but are you going to bogey party saturday night
+Decoded sentence: i dont know i dont know .
+---------------------------------------
+Input sentence: youre ruining my life because you wont be normal i cant be normal
+Decoded sentence: they dont need to be afraid to find me .
+---------------------------------------
+Input sentence: cant you forget for just one night that youre completely wretched
+Decoded sentence: do i know im not going to .
+---------------------------------------
+Input sentence: you are so completely unbalanced
+Decoded sentence: very good for you .
+---------------------------------------
+Input sentence: bianca i need to talk to you i need to tell you
+Decoded sentence: i dont want you to be here .
+---------------------------------------
+Input sentence: i dont get you you act like youre too good for any of this and then you go totally when you get here
+Decoded sentence: okay okay .
+---------------------------------------
+Input sentence: i do care but im a firm believer in doing something for your own reasons not someone else s
+Decoded sentence: .
+---------------------------------------
+Input sentence: joey never told you we went out did he
+Decoded sentence: what .
+---------------------------------------
+Input sentence: in 9th for a month
+Decoded sentence: no its a its a lot its time to get back .
+---------------------------------------
+Input sentence: he was like a total babe
+Decoded sentence: do you .
+---------------------------------------
+Input sentence: now i do back then was a different story
+Decoded sentence: ive got the in the .
+---------------------------------------
+Input sentence: he said everyone was doing it so i did it
+Decoded sentence: so did you see him .
+---------------------------------------
+Input sentence: why didnt you tell me
+Decoded sentence: to me .
+---------------------------------------
+Input sentence: thats not
+Decoded sentence: ive got a lot of things right now .
+---------------------------------------
+Input sentence: i guess i thought i was protecting you
+Decoded sentence: where youre going .
+---------------------------------------
+Input sentence: you looked beautiful last night you know
+Decoded sentence: who is it .
