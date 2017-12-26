@@ -1,4 +1,4 @@
 Flask==0.12
 Keras==2.1.1
 tensorflow==1.4.0
-h5py
+h5py==
